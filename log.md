@@ -1,5 +1,11 @@
 # 100 Days Of Code - Solidity - Log
 
+### Day 4: June 5, Friday
+**Today's Progress**: create AdvanceRequirement.sol, finish cryptozombies lesson 4: random numbers, modifiers, if/else
+
+**Thoughts:** important to keep track of the various instances where modifiers streamline, will need to look into other random number solutions (like chainlink's VRF)
+**To Do:** add a function to input the address of the favored party for AdvanceRequirement.sol and either hash the text of the requirement or input a description and section reference
+
 ### Day 3: June 4, Thursday
 **Today's Progress**: Cryptozombies Lesson 4: for loops, payable, withdraws
 
