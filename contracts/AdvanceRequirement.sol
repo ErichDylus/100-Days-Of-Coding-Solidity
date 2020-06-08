@@ -5,13 +5,15 @@ pragma solidity ^0.5.17;
 
 contract Requirement {
     bool private requirementSatisfied = false;
-    //this should be inputted by favored party; also need mapping for favored party's address
+    //consider mapping for favored party's address
     string condition;
     
     //set out Advance Requirement details
-    function context() public view returns(string memory) {
+    function context(string memory _reference) public view returns(string memory) {
         //add ability for favored party to input string condition, only once
-        return "Section 4 of the Loan Agreement";
+        require(msg.sender == 0xb7f49E02552751b249caE86959fD50D887708B1D, "Caller not favored party");
+        condition = _reference;
+        return condition;
     }
 
     function isrequirementSatisfied() public view returns(bool) {
