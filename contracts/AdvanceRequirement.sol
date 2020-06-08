@@ -9,10 +9,13 @@ contract Requirement {
     string condition;
     
     //set out Advance Requirement details
-    function context(string memory _reference) public view returns(string memory) {
+    function enterCondition(string memory _reference) public {
         //add ability for favored party to input string condition, only once
         require(msg.sender == 0xb7f49E02552751b249caE86959fD50D887708B1D, "Caller not favored party");
         condition = _reference;
+    }
+
+    function conditionContext() public view returns(string memory) {
         return condition;
     }
 
