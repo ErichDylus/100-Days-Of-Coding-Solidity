@@ -1,6 +1,6 @@
 # 100 Days Of Code - Solidity - Log
 
-### Day 6: June 7, Sunday
+### Day 7: June 8, Monday
 **Today's Progress**: experimenting with string input and memory/gas considerations in Remix; start Udemy course
 
 **Thoughts:** having some issues with a "one time" input string, there is likely a simpler solution.
