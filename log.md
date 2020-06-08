@@ -1,6 +1,12 @@
 # 100 Days Of Code - Solidity - Log
 
 ### Day 6: June 7, Sunday
+**Today's Progress**: experimenting with string input and memory/gas considerations in Remix; start Udemy course
+
+**Thoughts:** having some issues with a "one time" input string, there is likely a simpler solution.
+**To Do:** map the address of the favored party for AdvanceRequirement.sol and state change for the condition string, consider also triggering ERC721 transferTo
+
+### Day 6: June 7, Sunday
 **Today's Progress**: ERC721 Transfer standard and mappings, finish cryptozombies lesson 5: tokens, libraries (safemath)
 
 **Thoughts:** the transferTo v. approve standard is important if I want (i) owner to initiate transfer or (ii) recipient to request and owner to approve (two steps). The former seems more relevant for ERC721 representing title, an interest, and/or permissioned access, latter perhaps for auctions
