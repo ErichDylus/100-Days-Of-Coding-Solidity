@@ -1,17 +1,34 @@
-pragma solidity ^0.5.17;
+pragma solidity ^0.6.0;
 
-//work in progress, based off of lexDAO's Shame.sol -- use at own risk.
+import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/access/Ownable.sol";
+
+//work in progress -- use at own risk.
 //simple boolean Advance Requirement confirmation / condition precedent to deal closing
 
-contract Requirement {
+contract Requirement is Ownable {
     bool private requirementSatisfied = false;
-    //consider mapping for favored party's address
+    //mapping for favored party's address
+    mapping(address => bool) favored;
+    address whitelist;
     string condition;
+    
+    //allow owner to create whitelist of favored party address[es]
+    function permitAccess(address _addr) public onlyOwner {
+        favored[_addr] = true;
+    }
+    
+    function favoredParty(address _addr) public view returns(bool) {
+        return favored[_addr];
+    }
+    
+     function revokeAccess(address _addr) public onlyOwner {
+        favored[_addr] = false;
+    }
     
     //set out Advance Requirement details
     function enterCondition(string memory _reference) public {
-        //add ability for favored party to input string condition, only once
-        require(msg.sender == 0xb7f49E02552751b249caE86959fD50D887708B1D, "Caller not favored party");
+        //add ability for favored party to input string condition
+        require(favoredParty(favored), "Caller not favored party");
         condition = _reference;
     }
 
@@ -25,7 +42,7 @@ contract Requirement {
     
     //Favored Party must confirm the Requirement is satisfied
     function confirmSubmit() public {
-        require(msg.sender == 0xb7f49E02552751b249caE86959fD50D887708B1D, "Caller not favored party");
+        require(favoredParty(favored), "Caller not favored party");
         require(requirementSatisfied == false, "Advance Requirement already satisfied");
         requirementSatisfied = true;
     }
