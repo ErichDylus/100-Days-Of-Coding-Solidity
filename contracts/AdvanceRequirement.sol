@@ -1,7 +1,7 @@
-pragma solidity ^0.5.17;
+pragma solidity ^0.6.0;
 
-//work in progress, based off of lexDAO's Shame.sol -- use at own risk.
-//simple boolean Advance Requirement confirmation / condition precedent to deal closing
+//work in progress -- use at own risk.
+//simple boolean Advance Requirement / condition precedent to deal closing
 
 contract Requirement {
     bool private requirementSatisfied = false;
@@ -10,7 +10,7 @@ contract Requirement {
     
     //set out Advance Requirement details
     function enterCondition(string memory _reference) public {
-        //add ability for favored party to input string condition, only once
+        //add ability for favored party to input string condition, ideally only once
         require(msg.sender == 0xb7f49E02552751b249caE86959fD50D887708B1D, "Caller not favored party");
         condition = _reference;
     }
