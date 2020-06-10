@@ -1,9 +1,20 @@
 # 100 Days Of Code - Solidity - Log
 
+### Day 9: June 10, Wednesday
+**Today's Progress**: Udemy course-- unique function considerations in Solidity including gas, editing AdvanceRequirement pull request
+
+**Thoughts:** I should explore more efficient workflows on github, beyond just opening PRs on my own contracts
+
+### Day 8: June 9, Tuesday
+**Today's Progress**: experimenting with whitelisting in Remix; Udemy course-- deployment and running functions considerations
+
+**Thoughts:** need to learn how to check if an address exists in an array, and whether it is more efficient to (i) use boolean to decide whether to input an address in an array, or create a struct of addresses with their boolean status-- I think the former.  
+**To Do:** decide whether to keep AdvanceRequirement streamlined (msg.sender or hardcoded address can mark as satisfied) and do the whitelisting in a separate contract or merge the PR
+
 ### Day 7: June 8, Monday
 **Today's Progress**: experimenting with string input and memory/gas considerations in Remix; start Udemy course
 
-**Thoughts:** having some issues with a "one time" input string, there is likely a simpler solution.
+**Thoughts:** having some issues with a "one time" input string, there is likely a simpler solution. Could also leave as a clause to be incorporated directly into an OpenLaw template, so the context is merely a reference.  
 **To Do:** map the address of the favored party for AdvanceRequirement.sol and state change for the condition string, consider also triggering ERC721 transferTo
 
 ### Day 6: June 7, Sunday
@@ -19,8 +30,8 @@
 ### Day 4: June 5, Friday
 **Today's Progress**: create AdvanceRequirement.sol, finish cryptozombies lesson 4: random numbers, modifiers, if/else
 
-**Thoughts:** important to keep track of the various instances where modifiers streamline, will need to look into other random number solutions (like chainlink's VRF)
-**To Do:** add a function to store the address of the favored party for AdvanceRequirement.sol and either hash the text of the requirement or input a description and section reference
+**Thoughts:** important to keep track of the various instances where modifiers streamline, will need to look into other random number solutions (like chainlink's VRF)  
+**To Do:** add a function to store the address of the favored party for AdvanceRequirement.sol and either hash the text of the requirement or input a description and section reference | _edit_: done, Day 8, but need to restrict via require()
 
 ### Day 3: June 4, Thursday
 **Today's Progress**: Cryptozombies Lesson 4: for loops, payable, withdraws
