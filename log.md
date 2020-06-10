@@ -2,6 +2,7 @@
 
 ### Day 9: June 10, Wednesday
 **Today's Progress**: Udemy course-- unique function considerations in Solidity including gas, editing AdvanceRequirement pull request
+
 **Thoughts:** I should explore more efficient workflows on github, beyond just opening PRs on my own contracts
 
 ### Day 8: June 9, Tuesday
