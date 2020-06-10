@@ -1,17 +1,44 @@
 pragma solidity ^0.6.0;
 
-//work in progress -- use at own risk.
-//simple boolean Advance Requirement / condition precedent to deal closing
+import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/access/Ownable.sol";
 
-contract Requirement {
+//work in progress -- use at own risk.
+/* simple boolean Advance Requirement confirmation / condition precedent to deal closing
+** owner inputs Advance Requirement details and whitelist of addresses that are controlled by the favored party
+** favored party confirms when Advance Requirement is satisfied */
+
+contract Requirement is Ownable {
     bool private requirementSatisfied = false;
-    //consider mapping for favored party's address
+    //mapping for favored party's address
+    mapping(address => bool) favored;
+    address[] whitelist;
     string condition;
+    // event to be added when address added to whitelist || address given favored status
+    // event to be added when requirementSatisfied == true
     
-    //set out Advance Requirement details
-    function enterCondition(string memory _reference) public {
-        //add ability for favored party to input string condition, ideally only once
-        require(msg.sender == 0xb7f49E02552751b249caE86959fD50D887708B1D, "Caller not favored party");
+    //allow owner to create whitelist of favored party address[es]
+    function permitFavored(address _addr) public onlyOwner {
+        favored[_addr] = true;
+        whitelist.push(_addr);
+    }
+    
+    function favoredParty(address _addr) public view returns(bool) {
+        return favored[_addr];
+    }
+    
+     function revokeFavored(address _addr) public onlyOwner {
+        favored[_addr] = false;
+    }
+        
+    /*** optional modifier so only the favored party may call other functions
+    modifier onlyFavored() {
+        require(favored[msg.sender] == true, "Only the favored party can call this.");
+        _;
+    } ***/
+        
+    //owner sets out Advance Requirement details
+    function enterCondition(string memory _reference) public onlyOwner {
+        require(requirementSatisfied == false, "Advance Requirement already satisfied, cannot change details");
         condition = _reference;
     }
 
@@ -23,9 +50,9 @@ contract Requirement {
         return requirementSatisfied;
     }
     
-    //Favored Party must confirm the Requirement is satisfied
+    //Favored party must confirm the Requirement is satisfied
     function confirmSubmit() public {
-        require(msg.sender == 0xb7f49E02552751b249caE86959fD50D887708B1D, "Caller not favored party");
+        require(favored[msg.sender] == true, "Only favored party may confirm Advance Requirement is satisfied");
         require(requirementSatisfied == false, "Advance Requirement already satisfied");
         requirementSatisfied = true;
     }
