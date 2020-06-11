@@ -2,7 +2,7 @@ pragma solidity ^0.6.0;
 
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/access/Ownable.sol";
 
-//work in progress -- use at own risk.
+// work in progress -- USE AT OWN RISK.
 /* simple boolean Advance Requirement confirmation / condition precedent to deal closing
 ** owner inputs Advance Requirement details and whitelist of addresses that are controlled by the favored party
 ** favored party confirms when Advance Requirement is satisfied */
@@ -13,10 +13,10 @@ contract Requirement is Ownable {
     mapping(address => bool) favored;
     address[] whitelist;
     string condition;
-    // event to be added when address added to whitelist || address given favored status
-    // event to be added when requirementSatisfied == true
+    // TO DO: event to be added when address added to whitelist || address given favored status
+    // TO DO: event to be added when favored party calls confirmSubmit() || requirementSatisfied == true
     
-    //allow owner to create whitelist of favored party address[es]
+    //allow owner to assign favored status and create whitelist of favored party addresses
     function permitFavored(address _addr) public onlyOwner {
         favored[_addr] = true;
         whitelist.push(_addr);
@@ -36,9 +36,9 @@ contract Requirement is Ownable {
         _;
     } ***/
         
-    //owner sets out Advance Requirement details
+    //owner sets out Advance Requirement condition details or reference to provision in underlying documentation
     function enterCondition(string memory _reference) public onlyOwner {
-        require(requirementSatisfied == false, "Advance Requirement already satisfied, cannot change details");
+        require(requirementSatisfied == false, "Advance Requirement already satisfied, details may not be changed");
         condition = _reference;
     }
 
@@ -50,9 +50,9 @@ contract Requirement is Ownable {
         return requirementSatisfied;
     }
     
-    //Favored party must confirm the Requirement is satisfied
+    //Favored party submits confirmation that the Requirement is satisfied
     function confirmSubmit() public {
-        require(favored[msg.sender] == true, "Only favored party may confirm Advance Requirement is satisfied");
+        require(favored[msg.sender] == true, "Only the favored party may confirm Advance Requirement is satisfied");
         require(requirementSatisfied == false, "Advance Requirement already satisfied");
         requirementSatisfied = true;
     }
