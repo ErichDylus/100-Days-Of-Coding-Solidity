@@ -1,5 +1,10 @@
 # 100 Days Of Code - Solidity - Log
 
+### Day 10: June 11, Thursday
+**Today's Progress**: Udemy course-- function calls and details, editing/finalizing AdvanceRequirement.sol
+
+**Thoughts:** as I learn about Solidity's unique function and storage considerations, I'll seek to minimize gas to the extent possible
+
 ### Day 9: June 10, Wednesday
 **Today's Progress**: Udemy course-- unique function considerations in Solidity including gas, editing AdvanceRequirement pull request
 
