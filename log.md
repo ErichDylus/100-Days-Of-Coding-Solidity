@@ -1,5 +1,10 @@
 # 100 Days Of Code - Solidity - Log
 
+### Day 11: June 12, Friday
+**Today's Progress**: trial and error with strings- event and emit; Udemy course
+
+**Thoughts**: an event is probably better for the whitelist array, but I'm not sure why entered strings can't be used as events
+
 ### Day 10: June 11, Thursday
 **Today's Progress**: Udemy course-- function calls and details, editing/finalizing AdvanceRequirement.sol
 
