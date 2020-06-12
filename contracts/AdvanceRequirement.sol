@@ -9,10 +9,11 @@ import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contr
 
 contract Requirement is Ownable {
     bool private requirementSatisfied = false;
-    //mapping for favored party's address
+    //mapping for favored party's address - consider struct for address & bool 
     mapping(address => bool) favored;
     address[] whitelist;
     string condition;
+    
     // TO DO: event to be added when address added to whitelist || address given favored status
     // TO DO: event to be added when favored party calls confirmSubmit() || requirementSatisfied == true
     
@@ -37,9 +38,9 @@ contract Requirement is Ownable {
     } ***/
         
     //owner sets out Advance Requirement condition details or reference to provision in underlying documentation
-    function enterCondition(string memory _reference) public onlyOwner {
+    function enterCondition(string memory reference) public onlyOwner {
         require(requirementSatisfied == false, "Advance Requirement already satisfied, details may not be changed");
-        condition = _reference;
+        condition = reference;
     }
 
     function conditionContext() public view returns(string memory) {
