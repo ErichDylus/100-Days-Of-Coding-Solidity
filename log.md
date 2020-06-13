@@ -1,5 +1,11 @@
 # 100 Days Of Code - Solidity - Log
 
+
+### Day 12: June 13, Saturday
+**Today's Progress**: deploying contracts and ETH infrastructure; Udemy course
+
+**Thoughts**: would like to explore alternatives to the heavily used tools like truffle, infura, remix, for curiosity
+
 ### Day 11: June 12, Friday
 **Today's Progress**: trial and error with strings- event and emit; Udemy course
 
