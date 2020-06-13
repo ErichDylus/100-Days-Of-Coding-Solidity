@@ -15,7 +15,7 @@ contract Requirement is Ownable {
     string condition;
     
     event whitelistAdded(address indexed _addr);
-    // TO DO: event to be added when address added to whitelist || address given favored status
+    // TO DO: event to be added when address given favored status? or covered by whitelist
     // TO DO: event to be added when favored party calls confirmSubmit() || requirementSatisfied == true
     
     //allow owner to assign favored status and create whitelist of favored party addresses
