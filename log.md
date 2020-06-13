@@ -2,7 +2,7 @@
 
 
 ### Day 12: June 13, Saturday
-**Today's Progress**: deploying contracts and ETH infrastructure; Udemy course
+**Today's Progress**: deploying contracts and ETH infrastructure; Udemy course; more event examples
 
 **Thoughts**: would like to explore alternatives to the heavily used tools like truffle, infura, remix, for curiosity
 
