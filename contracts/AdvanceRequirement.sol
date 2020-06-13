@@ -14,6 +14,7 @@ contract Requirement is Ownable {
     address[] whitelist;
     string condition;
     
+    event whitelistAdded(address indexed _addr);
     // TO DO: event to be added when address added to whitelist || address given favored status
     // TO DO: event to be added when favored party calls confirmSubmit() || requirementSatisfied == true
     
@@ -21,6 +22,7 @@ contract Requirement is Ownable {
     function permitFavored(address _addr) public onlyOwner {
         favored[_addr] = true;
         whitelist.push(_addr);
+        emit whitelistAdded(_addr);
     }
     
     function favoredParty(address _addr) public view returns(bool) {
@@ -38,9 +40,9 @@ contract Requirement is Ownable {
     } ***/
         
     //owner sets out Advance Requirement condition details or reference to provision in underlying documentation
-    function enterCondition(string memory reference) public onlyOwner {
+    function enterCondition(string memory _reference) public onlyOwner {
         require(requirementSatisfied == false, "Advance Requirement already satisfied, details may not be changed");
-        condition = reference;
+        condition = _reference;
     }
 
     function conditionContext() public view returns(string memory) {
