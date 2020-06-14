@@ -1,5 +1,9 @@
 # 100 Days Of Code - Solidity - Log
 
+### Day 13: June 14, Sunday
+**Today's Progress**: exploring Mocha and javascript environments
+
+**Thoughts**: looking for the most streamlined dev environment, the Udemy course recs may be outdated. May also be a viable nocode solution here
 
 ### Day 12: June 13, Saturday
 **Today's Progress**: deploying contracts and ETH infrastructure; Udemy course; more event examples
