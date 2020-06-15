@@ -1,5 +1,10 @@
 # 100 Days Of Code - Solidity - Log
 
+### Day 14: June 15, Monday
+**Today's Progress**: more practice with events and emit
+
+**Thoughts**: still looking for good documentation on events and their restrictions, need to test structs
+
 ### Day 13: June 14, Sunday
 **Today's Progress**: exploring Mocha and javascript environments
 
