@@ -4,13 +4,12 @@ import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contr
 
 /* work in progress -- USE AT OWN RISK.
 ** simple boolean Advance Requirement confirmation / condition precedent to deal closing
-** owner inputs Advance Requirement details and whitelist of addresses that are controlled by the favored party
+** owner inputs Advance Requirement details and assigns favored party addresses
 ** favored party confirms when Advance Requirement is satisfied */
 
 contract Requirement is Ownable {
     
     bool private requirementSatisfied = false;
-    //mapping for favored party's address - consider struct for address & bool 
     mapping(address => bool) favored;
     address[] whitelist;
     string condition;
@@ -53,12 +52,12 @@ contract Requirement is Ownable {
     }
 
     //check if the requirement/condition is satisfied (bool)
-    function isrequirementSatisfied() public view returns(bool) {
+    function isRequirementSatisfied() public view returns(bool) {
         return requirementSatisfied;
     }
 
     //check if the requirement/condition is satisfied (string)
-    function satisfyRequirement() public view returns(string memory) {
+    function isRequirementSatisfiedReply() public view returns(string memory) {
         if(requirementSatisfied == true) {
             return "Advance Requirement is satisfied";
         } else {
