@@ -1,7 +1,7 @@
 # 100 Days Of Code - Solidity - Log
 
 ### Day 14: June 15, Monday
-**Today's Progress**: more practice with events and emit
+**Today's Progress**: more practice with events and emit; seems event inputs need to match corresponding function params, clean up comments in AdvanceRequirement.sol
 
 **Thoughts**: still looking for good documentation on events and their restrictions, need to test structs
 
