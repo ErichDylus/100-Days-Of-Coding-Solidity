@@ -2,12 +2,13 @@ pragma solidity ^0.6.0;
 
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/access/Ownable.sol";
 
-// work in progress -- USE AT OWN RISK.
-/* simple boolean Advance Requirement confirmation / condition precedent to deal closing
+/* work in progress -- USE AT OWN RISK.
+** simple boolean Advance Requirement confirmation / condition precedent to deal closing
 ** owner inputs Advance Requirement details and whitelist of addresses that are controlled by the favored party
 ** favored party confirms when Advance Requirement is satisfied */
 
 contract Requirement is Ownable {
+    
     bool private requirementSatisfied = false;
     //mapping for favored party's address - consider struct for address & bool 
     mapping(address => bool) favored;
@@ -15,21 +16,22 @@ contract Requirement is Ownable {
     string condition;
     
     event whitelistAdded(address indexed _addr);
-    // TO DO: event to be added when address given favored status? or covered by whitelist
-    // TO DO: event to be added when favored party calls confirmSubmit() || requirementSatisfied == true
+    event Confirmed();
     
-    //allow owner to assign favored status and create whitelist of favored party addresses
+    //allow owner to assign favored status to address, address added to whitelist of favored party addresses
     function permitFavored(address _addr) public onlyOwner {
         favored[_addr] = true;
         whitelist.push(_addr);
         emit whitelistAdded(_addr);
     }
     
+    //check if address is a favored party
     function favoredParty(address _addr) public view returns(bool) {
         return favored[_addr];
     }
     
-     function revokeFavored(address _addr) public onlyOwner {
+    //owner may revoke favored status 
+    function revokeFavored(address _addr) public onlyOwner {
         favored[_addr] = false;
     }
         
@@ -45,26 +47,30 @@ contract Requirement is Ownable {
         condition = _reference;
     }
 
+    //check details of Advance Requirement / condition precedent
     function conditionContext() public view returns(string memory) {
         return condition;
     }
 
+    //check if the requirement/condition is satisfied (bool)
     function isrequirementSatisfied() public view returns(bool) {
         return requirementSatisfied;
     }
-    
-    //Favored party submits confirmation that the Requirement is satisfied
-    function confirmSubmit() public {
-        require(favored[msg.sender] == true, "Only the favored party may confirm Advance Requirement is satisfied");
-        require(requirementSatisfied == false, "Advance Requirement already satisfied");
-        requirementSatisfied = true;
-    }
 
+    //check if the requirement/condition is satisfied (string)
     function satisfyRequirement() public view returns(string memory) {
         if(requirementSatisfied == true) {
             return "Advance Requirement is satisfied";
         } else {
             return "Advance Requirement remains outstanding";
         }
+    }
+    
+    //favored party submits confirmation that the requirement/condition is satisfied
+    function confirmSubmit() public {
+        require(favored[msg.sender] == true, "Only the favored party may confirm Advance Requirement is satisfied");
+        require(requirementSatisfied == false, "Advance Requirement already satisfied");
+        requirementSatisfied = true;
+        emit Confirmed();
     }
 }
