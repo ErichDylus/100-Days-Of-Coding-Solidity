@@ -33,7 +33,12 @@ contract Requirement is Ownable {
     function revokeFavored(address _addr) public onlyOwner {
         favored[_addr] = false;
     }
-        
+      
+    //view whitelisted favored party addresses
+    function viewWhitelist() public view returns(address[] memory) {
+        return whitelist;
+    }
+    
     /*** optional modifier so only the favored party may call other functions
     modifier onlyFavored() {
         require(favored[msg.sender] == true, "Only the favored party can call this.");
