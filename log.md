@@ -1,5 +1,10 @@
 # 100 Days Of Code - Solidity - Log
 
+### Day 15: June 16, Tuesday
+**Today's Progress**: address array events; begin basic understanding of web3 pack
+
+**Thoughts**: will likely eschew granular web3 concepts for viable nocode or prebuilt solutions so as not to be overwhelmed/inundated at first
+
 ### Day 14: June 15, Monday
 **Today's Progress**: more practice with events and emit; seems event inputs need to match corresponding function params, clean up comments in AdvanceRequirement.sol
 
