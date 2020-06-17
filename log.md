@@ -1,5 +1,10 @@
 # 100 Days Of Code - Solidity - Log
 
+### Day 16: June 17, Wednesday
+**Today's Progress**: revisit ERC721 portions of cryptozombies; continued background on web3 pack; review DMM code
+
+**Thoughts**: begin to assemble components and params for an aircraft NFT; keeping momentum on the solidity side and will handle front end/web3 on the latter half of the challenge
+
 ### Day 15: June 16, Tuesday
 **Today's Progress**: address array events; begin basic understanding of web3 pack
 
