@@ -1,5 +1,10 @@
 # 100 Days Of Code - Solidity - Log
 
+### Day 17: June 18, Thursday
+**Today's Progress**: Continue ERC721 portions of cryptozombies and map out intended NFT details
+
+**Thoughts**: need to dive in deep to the implications of the transferTo v. approve standard, for owner to initiate transfer v. recipient requesting and owner approving
+
 ### Day 16: June 17, Wednesday
 **Today's Progress**: revisit ERC721 portions of cryptozombies; continued background on web3 pack; review DMM code
 
