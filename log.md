@@ -1,5 +1,10 @@
 # 100 Days Of Code - Solidity - Log
 
+### Day 18: June 19, Friday
+**Today's Progress**: start CreateAircraft.sol and NFT considerations for FAA aircraft registry token, SafeMath
+
+**Thoughts**: need to hone in on exact params and data types for the Aircraft ER721-- initially based on FAA registry attributes (i.e. no engines). Project is starting to take shape: escrow dApp that takes inputs of aircraft details, AdvanceRequirement satisfaction, and external data from oracles
+
 ### Day 17: June 18, Thursday
 **Today's Progress**: Continue ERC721 portions of cryptozombies and map out intended NFT details
 
