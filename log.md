@@ -1,5 +1,10 @@
 # 100 Days Of Code - Solidity - Log
 
+### Day 19: June 20, Saturday
+**Today's Progress**: explore 0x ERC721 implementation, including ERC-721JSON metadata file (https://github.com/0xcert/ethereum-erc721) 
+
+**Thoughts**: will be useful to understand differences in audited ERC721 implementations, and how they can have dynamic attributes
+
 ### Day 18: June 19, Friday
 **Today's Progress**: start CreateAircraft.sol and NFT considerations for FAA aircraft registry token, SafeMath
 
