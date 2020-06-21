@@ -1,5 +1,10 @@
 # 100 Days Of Code - Solidity - Log
 
+### Day 20: June 21, Sunday
+**Today's Progress**: experiment with dynamic array limitations, explore chainlink's dynamic NFTs for potential asset representation with native attributes and valuation 
+
+**Thoughts**: will refocus on specific solidity concepts, such as using structs
+
 ### Day 19: June 20, Saturday
 **Today's Progress**: explore 0x ERC721 implementation, including ERC-721JSON metadata file (https://github.com/0xcert/ethereum-erc721) 
 
