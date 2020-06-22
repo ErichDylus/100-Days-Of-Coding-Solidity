@@ -1,5 +1,10 @@
 # 100 Days Of Code - Solidity - Log
 
+### Day 21: June 22, Monday
+**Today's Progress**: analyze/replicate LexToken and other parts of lexDAO codebase, other review
+
+**Thoughts**: taking a breather due to an overly busy workweek, but will use the Udemy course to stay up on concepts
+
 ### Day 20: June 21, Sunday
 **Today's Progress**: experiment with dynamic array limitations, explore chainlink's dynamic NFTs for potential asset representation with native attributes and valuation 
 
