@@ -1,5 +1,10 @@
 # 100 Days Of Code - Solidity - Log
 
+### Day 22: June 25, Thursday
+**Today's Progress**: review Moloch code and potential divisibility uses for lexDAO's dripDrop
+
+**Thoughts**: skipping next unit of Udemy course to prevent stasis from lack of javascript background
+
 ### Day 21: June 22, Monday
 **Today's Progress**: analyze/replicate LexToken and other parts of lexDAO codebase, other review
 
