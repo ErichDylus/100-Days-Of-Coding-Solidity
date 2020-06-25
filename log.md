@@ -1,7 +1,7 @@
 # 100 Days Of Code - Solidity - Log
 
 ### Day 22: June 25, Thursday
-**Today's Progress**: review Moloch code and potential divisibility uses for lexDAO's dripDrop
+**Today's Progress**: revise CreateAircraft.sol, review Moloch code and potential divisibility uses for lexDAO's dripDrop
 
 **Thoughts**: skipping next unit of Udemy course to prevent stasis from lack of javascript background
 
