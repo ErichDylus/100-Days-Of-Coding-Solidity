@@ -2,11 +2,13 @@
 
 pragma solidity ^0.6.0;
 
+import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC721/ERC721.sol";
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/access/Ownable.sol";
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/math/SafeMath.sol";
 
 //WORK IN PROGRESS -- USE AT OWN RISK
-//see https://cryptozombies.io/en/lesson/5/chapter/13
+//SEE: https://cryptozombies.io/en/lesson/5/chapter/13
+// @dev: create an ERC721 NFT for an aircraft, for purposes of the FAA Registry
 
 contract CreateAircraft is Ownable {
 
@@ -25,6 +27,15 @@ contract CreateAircraft is Ownable {
   }
 
   Aircraft[] public aircraft;
+  
+  //SEE: https://medium.com/openberry/erc721-vue-js-cryptokitties-like-dapp-in-under-10-minutes-5115efc9e0bb
+  //Initializing an ERC-721 Token named 'AircraftToken' with a symbol 'AIR'
+  constructor() ERC721("AircraftToken", "AIR") public {
+  }
+
+  // Fallback function
+  function() external payable {
+  }
 
   mapping (uint => address) public aircraftToOwner;
   mapping (address => uint) ownerAircraftCount;
@@ -37,7 +48,7 @@ contract CreateAircraft is Ownable {
   }
   
   //****THIS NEEDS WORK
-  function aircraftDetails() public view returns(string memory, string memory, uint, uint, bool, bool, bool) {
+  function aircraftDetails(uint regId) public view returns(string memory, string memory, uint, uint, bool, bool, bool) {
         return (aircraft.model, aircraft.nNumber, aircraft.msn, aircraft.regId, aircraft.faaLienExists, aircraft.capeTownInterest, aircraft.fractionalOwner);
   }
 }
