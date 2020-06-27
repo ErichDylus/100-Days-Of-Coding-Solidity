@@ -49,8 +49,8 @@ contract AircraftToken is ERC721, Ownable {
   
   //****THIS NEEDS WORK
   function aircraftDetails(uint regId) public view returns(string memory, string memory, uint, bool, bool, bool) {
-        Aircraft = aircraft[regId];
-        return (aircraft.model, aircraft.nNumber, aircraft.msn, aircraft.faaLienExists, aircraft.capeTownInterest, aircraft.fractionalOwner);
+        Aircraft storage regToken = aircraft[regId];
+        return (regToken.model, regToken.nNumber, regToken.msn, regToken.faaLienExists, regToken.capeTownInterest, regToken.fractionalOwner);
   }
   
   // @dev Function to allow user to buy a new airraft token (calls createAircraft())
