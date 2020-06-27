@@ -1,5 +1,10 @@
 # 100 Days Of Code - Solidity - Log
 
+### Day 23: June 27, Saturday
+**Today's Progress**: more work on CreateAircraft.sol, now fully using OZ's ERC721 code, will need several-day overhaul
+
+**Thoughts**: better to use widely vetted code than reinventing the wheel wherever possible-- will consider the same for AircraftOwnership
+
 ### Day 22: June 25, Thursday
 **Today's Progress**: revise CreateAircraft.sol, review Moloch code and potential divisibility uses for lexDAO's dripDrop
 
