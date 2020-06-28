@@ -1,5 +1,10 @@
 # 100 Days Of Code - Solidity - Log
 
+### Day 24: June 28, Sunday
+**Today's Progress**: dev AircraftToken.sol, including payable / fee for creation. Interaction of ERC721 and underlying structs
+
+**Thoughts**: need to focus on how to return token details and maybe down the line, how to return a token's details given one of its parameters 
+
 ### Day 23: June 27, Saturday
 **Today's Progress**: more work on CreateAircraft.sol, now fully using OZ's ERC721 code, will need several-day overhaul
 
