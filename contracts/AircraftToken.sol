@@ -39,8 +39,11 @@ contract AircraftToken is ERC721, Ownable {
   mapping (uint => address) public aircraftToOwner;
   mapping (address => uint) ownerAircraftCount;
 
-  function _createAircraft(address aircraftOwner, string memory _model, string memory _nNumber, uint _regId, uint _msn, bool _faaLienExists, bool _capeTownInterest, bool _fractionalOwner) internal {
+  function _createAircraft(address aircraftOwner, string memory _model, string memory _nNumber, uint _regId, uint _msn, bool _faaLienExists, bool _capeTownInterest, bool _fractionalOwner) public payable {
+    require(aircraftOwner == msg.sender);
+    require(msg.value >= 0.02 ether);
     regId = _regId;
+    Aircraft storage regToken = aircraft[regId];
     aircraft.push(Aircraft(_model, _nNumber,  _msn, _faaLienExists, _capeTownInterest, _fractionalOwner));
     aircraftToOwner[regId] = msg.sender;
     ownerAircraftCount[msg.sender] = ownerAircraftCount[msg.sender].add(1);
@@ -48,14 +51,13 @@ contract AircraftToken is ERC721, Ownable {
   }
   
   //****THIS NEEDS WORK
-  function aircraftDetails(uint regId) public view returns(string memory, string memory, uint, bool, bool, bool) {
-        Aircraft storage regToken = aircraft[regId];
-        return (regToken.model, regToken.nNumber, regToken.msn, regToken.faaLienExists, regToken.capeTownInterest, regToken.fractionalOwner);
+  function aircraftDetails() public view returns(string memory, string memory, uint, bool, bool, bool) {
+    return (regToken.aircraftOwner, regToken.model, regToken.nNumber, regToken.msn, regToken.faaLienExists, regToken.capeTownInterest, regToken.fractionalOwner);
   }
   
   // @dev Function to allow user to buy a new airraft token (calls createAircraft())
-  function buyRegToken() external payable {
-    require(msg.value == 0.02 ether);
-    _createAircraft();
-    }
+  //function buyRegToken() external payable {
+    //require(msg.value == 0.02 ether);
+    //createAircraft();
+    //}
 }
