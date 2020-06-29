@@ -34,7 +34,7 @@ contract AircraftToken is ERC721, Ownable {
   }
 
   // Fallback function
-  fallback() external payable {
+  receive() external payable {
   }
 
   mapping (uint => address) public aircraftToOwner;
@@ -50,8 +50,8 @@ contract AircraftToken is ERC721, Ownable {
   }
   
   //****THIS NEEDS WORK - want to view Aircraft by regId, or maybe one of the other parameters
-  function aircraftDetails(uint regId) public view returns(address, string memory, string memory, uint, bool, bool, bool) {
-    Aircraft storage regToken = aircraft[regId];
+  function aircraftDetails(uint _regId) public view returns(address, string memory, string memory, uint, bool, bool, bool) {
+    Aircraft storage regToken = aircraft[_regId];
     return (regToken.aircraftOwner, regToken.model, regToken.nNumber, regToken.msn, regToken.faaLienExists, regToken.capeTownInterest, regToken.fractionalOwner);
   }
   
