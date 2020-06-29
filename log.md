@@ -1,5 +1,11 @@
 # 100 Days Of Code - Solidity - Log
 
+### Day 25: June 29, Monday
+**Today's Progress**: successfully compiled AircraftToken.sol with receive() fix and minimum ETH payment, able to enter one aircraft
+
+**Thoughts**: the fallback() v. receive() issue was strictly a version deprecation, need to be mindful of these. Next is tying info to actual NFT 
+**To Do**: tie aircraft info to actual NFT-- will likely need to have buyRegToken then invoke createAircraft, which will be an internal function returning newAircraftID
+
 ### Day 24: June 28, Sunday
 **Today's Progress**: dev AircraftToken.sol, including payable / fee for creation. Interaction of ERC721 and underlying structs
 
