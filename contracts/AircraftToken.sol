@@ -13,7 +13,7 @@ contract AircraftToken is ERC721, Ownable {
 
   using SafeMath for uint;
   
-  event NewAircraft(address aircraftOwner, string model, string nNumber, uint regId, uint msn, bool faaLienExists, bool capeTownInterest, bool fractionalOwner);
+  event CreateAircraft(address aircraftOwner, string model, string nNumber, uint regId, uint msn, bool faaLienExists, bool capeTownInterest, bool fractionalOwner);
 
   struct Aircraft {
     address aircraftOwner;
@@ -37,16 +37,35 @@ contract AircraftToken is ERC721, Ownable {
   receive() external payable {
   }
 
-  mapping (uint => address) public aircraftToOwner;
-  mapping (address => uint) ownerAircraftCount;
-
-  function _createAircraft(address aircraftOwner, string memory _model, string memory _nNumber, uint _regId, uint _msn, bool _faaLienExists, bool _capeTownInterest, bool _fractionalOwner) public payable {
-    require(aircraftOwner == msg.sender);
+    function _createAircraft(address _aircraftOwner, string memory _model, string memory _nNumber, uint _regId, uint _msn, bool _faaLienExists, bool _capeTownInterest, bool _fractionalOwner) public payable returns (uint) {
+    // may change to onlyOwner, if intended for registry creation of NFT
+    require(_aircraftOwner == msg.sender);
     require(msg.value >= 0.02 ether);
-    aircraft.push(Aircraft(aircraftOwner, _model, _nNumber,  _regId, _msn, _faaLienExists, _capeTownInterest, _fractionalOwner));
-    aircraftToOwner[_regId] = msg.sender;
-    ownerAircraftCount[msg.sender] = ownerAircraftCount[msg.sender].add(1);
-    emit NewAircraft(aircraftOwner, _model, _nNumber, _regId, _msn, _faaLienExists, _capeTownInterest, _fractionalOwner);
+    Aircraft memory newAircraft = Aircraft({
+        aircraftOwner: _aircraftOwner,
+        model: _model,
+        nNumber: _nNumber,
+        regId: _regId,
+        msn: _msn,
+        faaLienExists: _faaLienExists,
+        capeTownInterest: _capeTownInterest,
+        fractionalOwner: _fractionalOwner
+    });
+    // aircraft.push(Aircraft(_aircraftOwner, _model, _nNumber,  _regId, _msn, _faaLienExists, _capeTownInterest, _fractionalOwner));
+    // need better way to create newAircraftId
+    uint newAircraftId = _regId.add(1);
+    super._mint(_aircraftOwner, newAircraftId);
+    emit CreateAircraft(
+        newAircraft.aircraftOwner, 
+        newAircraft.model, 
+        newAircraft.nNumber, 
+        newAircraft.regId, 
+        newAircraft.msn, 
+        newAircraft.faaLienExists, 
+        newAircraft.capeTownInterest, 
+        newAircraft.fractionalOwner
+        );
+    return newAircraftId;
   }
   
   //****THIS NEEDS WORK - want to view Aircraft by regId, or maybe one of the other parameters
