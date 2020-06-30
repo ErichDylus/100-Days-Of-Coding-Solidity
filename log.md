@@ -1,6 +1,6 @@
 # 100 Days Of Code - Solidity - Log
 
-### Day 26: June 30, Monday
+### Day 26: June 30, Tuesday
 **Today's Progress**: continue aircraft NFT implementation, intro to Git
 
 **Thoughts**: need to make a practice of charting out function flow and matrixes, etc.
