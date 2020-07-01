@@ -3,7 +3,7 @@
 ### Day 27: July 1, Wednesday
 **Today's Progress**: aircraft NFT implementation seems to be working, tokensupply increments, but need to fix aircraftDetails function to return token info
 
-**Thoughts**: need to look into how to pull details of a given ERC721 token, and learn more about calldata
+**Thoughts**: need to look into how to pull details of a given ERC721 token, create a unique ID for newAircraftId, and learn more about calldata
 
 ### Day 26: June 30, Tuesday
 **Today's Progress**: continue aircraft NFT implementation, intro to Git, ERC721 minting 
