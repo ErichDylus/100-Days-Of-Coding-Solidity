@@ -67,8 +67,9 @@ contract AircraftToken is ERC721, Ownable {
         capeTownInterest: _capeTownInterest,
         fractionalOwner: _fractionalOwner
     });
+    // add to publicly viewable matrix instead of viewing token info? 
     // aircraft.push(Aircraft(_aircraftOwner, _model, _nNumber,  _regId, _msn, _faaLienExists, _capeTownInterest, _fractionalOwner));
-    // need better way to create newAircraftId
+    // need better way to create newAircraftId- SEE https://ethereum.stackexchange.com/questions/9965/how-to-generate-a-unique-identifier-in-solidity 
     uint newAircraftId = _regId.add(1);
     super._mint(_aircraftOwner, newAircraftId);
     emit CreateAircraft(
