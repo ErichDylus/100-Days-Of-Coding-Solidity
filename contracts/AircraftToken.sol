@@ -13,7 +13,16 @@ contract AircraftToken is ERC721, Ownable {
 
   using SafeMath for uint;
   
-  event CreateAircraft(address aircraftOwner, string model, string nNumber, uint regId, uint msn, bool faaLienExists, bool capeTownInterest, bool fractionalOwner);
+  event CreateAircraft(
+      address aircraftOwner, 
+      string model, 
+      string nNumber, 
+      uint regId, 
+      uint msn, 
+      bool faaLienExists, 
+      bool capeTownInterest, 
+      bool fractionalOwner
+      );
 
   struct Aircraft {
     address aircraftOwner;
@@ -37,10 +46,17 @@ contract AircraftToken is ERC721, Ownable {
   receive() external payable {
   }
 
-    function _createAircraft(address _aircraftOwner, string memory _model, string memory _nNumber, uint _regId, uint _msn, bool _faaLienExists, bool _capeTownInterest, bool _fractionalOwner) public payable returns (uint) {
+    function _createAircraft(
+        address _aircraftOwner, 
+        string memory _model, 
+        string memory _nNumber, 
+        uint _regId, 
+        uint _msn, 
+        bool _faaLienExists, 
+        bool _capeTownInterest, 
+        bool _fractionalOwner
+        ) internal returns (uint) {
     // may change to onlyOwner, if intended for registry creation of NFT
-    require(_aircraftOwner == msg.sender);
-    require(msg.value >= 0.02 ether);
     Aircraft memory newAircraft = Aircraft({
         aircraftOwner: _aircraftOwner,
         model: _model,
@@ -71,12 +87,29 @@ contract AircraftToken is ERC721, Ownable {
   //****THIS NEEDS WORK - want to view Aircraft by regId, or maybe one of the other parameters
   function aircraftDetails(uint _regId) public view returns(address, string memory, string memory, uint, bool, bool, bool) {
     Aircraft storage regToken = aircraft[_regId];
-    return (regToken.aircraftOwner, regToken.model, regToken.nNumber, regToken.msn, regToken.faaLienExists, regToken.capeTownInterest, regToken.fractionalOwner);
+    return (
+        regToken.aircraftOwner, 
+        regToken.model, 
+        regToken.nNumber, 
+        regToken.msn, 
+        regToken.faaLienExists, 
+        regToken.capeTownInterest, 
+        regToken.fractionalOwner
+        );
   }
   
-  // @dev Function to allow user to buy a new airraft token (calls createAircraft())
-  //function buyRegToken() external payable {
-    //require(msg.value == 0.02 ether);
-    //createAircraft();
-    //}
+  // @dev Function to buy a new airraft token (calls createAircraft() with given parameters)
+  function buyRegToken(
+        address _aircraftOwner, 
+        string calldata _model, 
+        string calldata _nNumber, 
+        uint _regId, 
+        uint _msn, 
+        bool _faaLienExists, 
+        bool _capeTownInterest, 
+        bool _fractionalOwner
+        ) external payable returns(uint) {
+    require(msg.value >= 0.02 ether);
+    _createAircraft(_aircraftOwner, _model, _nNumber, _regId, _msn, _faaLienExists, _capeTownInterest, _fractionalOwner);
+    }
 }
