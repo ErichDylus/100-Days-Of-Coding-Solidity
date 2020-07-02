@@ -69,8 +69,8 @@ contract AircraftToken is ERC721, Ownable {
     });
     // add to publicly viewable matrix instead of viewing token info? 
     // aircraft.push(Aircraft(_aircraftOwner, _model, _nNumber,  _regId, _msn, _faaLienExists, _capeTownInterest, _fractionalOwner));
-    // need better way to create newAircraftId- SEE https://ethereum.stackexchange.com/questions/9965/how-to-generate-a-unique-identifier-in-solidity 
-    uint newAircraftId = _regId.add(1);
+    // wAircraftId should be non-replicable SEE https://ethereum.stackexchange.com/questions/9965/how-to-generate-a-unique-identifier-in-solidity 
+    uint newAircraftId = uint(keccak256(abi.encodePacked(_regId + _msn)));
     super._mint(_aircraftOwner, newAircraftId);
     emit CreateAircraft(
         newAircraft.aircraftOwner, 
@@ -101,7 +101,6 @@ contract AircraftToken is ERC721, Ownable {
   
   // @dev Function to buy a new airraft token (calls createAircraft() with given parameters)
   function buyRegToken(
-        address _aircraftOwner, 
         string calldata _model, 
         string calldata _nNumber, 
         uint _regId, 
@@ -111,6 +110,6 @@ contract AircraftToken is ERC721, Ownable {
         bool _fractionalOwner
         ) external payable returns(uint) {
     require(msg.value >= 0.02 ether);
-    _createAircraft(_aircraftOwner, _model, _nNumber, _regId, _msn, _faaLienExists, _capeTownInterest, _fractionalOwner);
+    _createAircraft(msg.sender, _model, _nNumber, _regId, _msn, _faaLienExists, _capeTownInterest, _fractionalOwner);
     }
 }
