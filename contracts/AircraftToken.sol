@@ -69,7 +69,7 @@ contract AircraftToken is ERC721, Ownable {
     });
     // add to publicly viewable matrix instead of viewing token info? 
     // aircraft.push(Aircraft(_aircraftOwner, _model, _nNumber,  _regId, _msn, _faaLienExists, _capeTownInterest, _fractionalOwner));
-    // wAircraftId should be non-replicable SEE https://ethereum.stackexchange.com/questions/9965/how-to-generate-a-unique-identifier-in-solidity 
+    // newAircraftId should be non-replicable SEE https://ethereum.stackexchange.com/questions/9965/how-to-generate-a-unique-identifier-in-solidity 
     uint newAircraftId = uint(keccak256(abi.encodePacked(_regId + _msn)));
     super._mint(_aircraftOwner, newAircraftId);
     emit CreateAircraft(
@@ -85,9 +85,12 @@ contract AircraftToken is ERC721, Ownable {
     return newAircraftId;
   }
   
-  //****THIS NEEDS WORK - want to view Aircraft by regId, or maybe one of the other parameters
-  function aircraftDetails(uint _regId) public view returns(address, string memory, string memory, uint, bool, bool, bool) {
-    Aircraft storage regToken = aircraft[_regId];
+  //****THIS NEEDS WORK - want to view Aircraft by newAircraftId, or maybe one of the other parameters; may use Uniform Resource Identifier (URI) ("
+  **** function tokenURI(uint256 _tokenId) external view returns (string);
+  *** RFC 3986 ERC721 Metadata JSON Schema **/
+  
+  function aircraftDetails(uint newAircraftId) public view returns(address, string memory, string memory, uint, bool, bool, bool) {
+    Aircraft storage regToken = aircraft[newAircraftId];
     return (
         regToken.aircraftOwner, 
         regToken.model, 
