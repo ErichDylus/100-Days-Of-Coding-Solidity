@@ -1,5 +1,10 @@
 # 100 Days Of Code - Solidity - Log
 
+### Day 28: July 2, Thursday
+**Today's Progress**: newAircraftId now has unique value based on owner's regId and MSN of applicable aircraft, but still need to figure out how to pull token data/array info
+
+**Thoughts**: more ERC721 learning to do-- tokenURI (uniform resource identifier) may be the answer. URIs are defined in RFC 3986
+
 ### Day 27: July 1, Wednesday
 **Today's Progress**: aircraft NFT implementation seems to be working, tokensupply increments, but need to fix aircraftDetails function to return token info
 
