@@ -1,5 +1,10 @@
 # 100 Days Of Code - Solidity - Log
 
+### Day 29: July 3, Friday
+**Today's Progress**: AircraftToken.sol now functional, token/aircraft details returnable by incrementing "i" number and pulling the "i"th Aircraft struct in the aircraft array of Aircraft structs, but searcher must input the "i" number which is not ideal. This can likely be solved either by several arrays or off-chain databases (public database storage of i numbers isn't a decentralization threat, just allows cheaper access to helpful search terms). tokenId/newAircraftId returns owner, which can be used to find the other information
+
+**Thoughts**: eventually I would like to flesh out how to make tokens searchable by each attribute, but will re-focus on Udemy course and eventual escrow contract
+
 ### Day 28: July 2, Thursday
 **Today's Progress**: newAircraftId now has unique value based on owner's regId and MSN of applicable aircraft, but still need to figure out how to pull token data/array info
 
