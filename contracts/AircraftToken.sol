@@ -5,8 +5,7 @@ pragma solidity ^0.6.0;
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC721/ERC721.sol";
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/access/Ownable.sol";
 
-//WORK IN PROGRESS -- USE AT OWN RISK
-//SEE: https://cryptozombies.io/en/lesson/5/chapter/13
+// **********WORK IN PROGRESS -- USE AT OWN RISK**********
 // @dev: create an ERC721 NFT for an aircraft, for purposes of the FAA Registry
 
 contract AircraftToken is ERC721, Ownable {
@@ -38,12 +37,11 @@ contract AircraftToken is ERC721, Ownable {
   Aircraft[] public aircraft;
   uint i = 0;
   
-  //SEE: https://medium.com/openberry/erc721-vue-js-cryptokitties-like-dapp-in-under-10-minutes-5115efc9e0bb
-  //Initializing an ERC-721 Token named 'AircraftToken' with a symbol 'AIR'
+  // @dev Initializing an ERC-721 standard token named 'AircraftToken' with a symbol 'AIR'
   constructor() ERC721("AircraftToken", "AIR") public {
   }
 
-  // Fallback function
+  // fallback function
   receive() external payable {
   }
 
@@ -58,6 +56,7 @@ contract AircraftToken is ERC721, Ownable {
         bool _fractionalOwner
         ) internal returns (uint, uint) {
     // may change to onlyOwner, if intended for registry creation of NFT
+    
     Aircraft memory newAircraft = Aircraft({
         aircraftOwner: _aircraftOwner,
         model: _model,
@@ -68,10 +67,9 @@ contract AircraftToken is ERC721, Ownable {
         capeTownInterest: _capeTownInterest,
         fractionalOwner: _fractionalOwner
     });
-    // add to publicly viewable matrix instead of viewing token info? 
-    // aircraft.push(Aircraft(_aircraftOwner, _model, _nNumber,  _regId, _msn, _faaLienExists, _capeTownInterest, _fractionalOwner));
-    // newAircraftId should be non-replicable SEE https://ethereum.stackexchange.com/questions/9965/how-to-generate-a-unique-identifier-in-solidity 
-    uint newAircraftId = uint(keccak256(abi.encodePacked(_regId + _msn)));
+    
+    // create unique aircraft identifier based on owner reg ID, i number and msn, but may not be necessary for tokenID
+    uint newAircraftId = uint(keccak256(abi.encodePacked(_regId + i + _msn)));
     aircraft.push(Aircraft(_aircraftOwner, _model, _nNumber,  _regId, _msn, _faaLienExists, _capeTownInterest, _fractionalOwner));
     i++;
     super._mint(_aircraftOwner, newAircraftId);
@@ -88,10 +86,7 @@ contract AircraftToken is ERC721, Ownable {
     return(newAircraftId, i);
   }
   
-  /****THIS NEEDS WORK - want to view Aircraft by newAircraftId, or maybe one of the other parameters; may use Uniform Resource Identifier (URI) ("
-  **** function tokenURI(uint256 _tokenId) external view returns (string);
-  *** RFC 3986 ERC721 Metadata JSON Schema **/
-  
+  // return aircraft details based on i number (must be inputted by searcher, for now)
   function aircraftDetails(uint _i) public view returns(address, string memory, string memory, uint, bool, bool, bool) {
     Aircraft storage regToken = aircraft[_i];
     return (
@@ -118,4 +113,10 @@ contract AircraftToken is ERC721, Ownable {
     require(msg.value >= 0.02 ether);
     _createAircraft(msg.sender, _model, _nNumber, _regId, _msn, _faaLienExists, _capeTownInterest, _fractionalOwner);
     }
+    
+    //SEE: https://medium.com/openberry/erc721-vue-js-cryptokitties-like-dapp-in-under-10-minutes-5115efc9e0bb
+    // newAircraftId must be non-replicable SEE https://ethereum.stackexchange.com/questions/9965/how-to-generate-a-unique-identifier-in-solidity
+    /*** may look into Uniform Resource Identifiers (URI) 
+    **** function tokenURI(uint256 _tokenId) external view returns (string);
+    *** RFC 3986 ERC721 Metadata JSON Schema **/
 }
