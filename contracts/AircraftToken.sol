@@ -36,6 +36,7 @@ contract AircraftToken is ERC721, Ownable {
   }
 
   Aircraft[] public aircraft;
+  uint i = 0;
   
   //SEE: https://medium.com/openberry/erc721-vue-js-cryptokitties-like-dapp-in-under-10-minutes-5115efc9e0bb
   //Initializing an ERC-721 Token named 'AircraftToken' with a symbol 'AIR'
@@ -55,7 +56,7 @@ contract AircraftToken is ERC721, Ownable {
         bool _faaLienExists, 
         bool _capeTownInterest, 
         bool _fractionalOwner
-        ) internal returns (uint) {
+        ) internal returns (uint, uint) {
     // may change to onlyOwner, if intended for registry creation of NFT
     Aircraft memory newAircraft = Aircraft({
         aircraftOwner: _aircraftOwner,
@@ -71,6 +72,8 @@ contract AircraftToken is ERC721, Ownable {
     // aircraft.push(Aircraft(_aircraftOwner, _model, _nNumber,  _regId, _msn, _faaLienExists, _capeTownInterest, _fractionalOwner));
     // newAircraftId should be non-replicable SEE https://ethereum.stackexchange.com/questions/9965/how-to-generate-a-unique-identifier-in-solidity 
     uint newAircraftId = uint(keccak256(abi.encodePacked(_regId + _msn)));
+    aircraft.push(Aircraft(_aircraftOwner, _model, _nNumber,  _regId, _msn, _faaLienExists, _capeTownInterest, _fractionalOwner));
+    i++;
     super._mint(_aircraftOwner, newAircraftId);
     emit CreateAircraft(
         newAircraft.aircraftOwner, 
@@ -82,15 +85,15 @@ contract AircraftToken is ERC721, Ownable {
         newAircraft.capeTownInterest, 
         newAircraft.fractionalOwner
         );
-    return newAircraftId;
+    return(newAircraftId, i);
   }
   
-  //****THIS NEEDS WORK - want to view Aircraft by newAircraftId, or maybe one of the other parameters; may use Uniform Resource Identifier (URI) ("
+  /****THIS NEEDS WORK - want to view Aircraft by newAircraftId, or maybe one of the other parameters; may use Uniform Resource Identifier (URI) ("
   **** function tokenURI(uint256 _tokenId) external view returns (string);
   *** RFC 3986 ERC721 Metadata JSON Schema **/
   
-  function aircraftDetails(uint newAircraftId) public view returns(address, string memory, string memory, uint, bool, bool, bool) {
-    Aircraft storage regToken = aircraft[newAircraftId];
+  function aircraftDetails(uint _i) public view returns(address, string memory, string memory, uint, bool, bool, bool) {
+    Aircraft storage regToken = aircraft[_i];
     return (
         regToken.aircraftOwner, 
         regToken.model, 
