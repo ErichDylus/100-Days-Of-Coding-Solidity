@@ -1,5 +1,10 @@
 # 100 Days Of Code - Solidity - Log
 
+### Day 30: July 4, Friday
+**Today's Progress**: global variables and start Lottery.sol in udemy course, review data and msg intricacies
+
+**Thoughts**: back to basics for refresher, next overview on arrays will be good review for AircraftToken.sol
+
 ### Day 29: July 3, Friday
 **Today's Progress**: AircraftToken.sol now functional, token/aircraft details returnable by incrementing "i" number and pulling the "i"th Aircraft struct in the aircraft array of Aircraft structs, but searcher must input the "i" number which is not ideal. This can likely be solved either by several arrays or off-chain databases (public database storage of i numbers isn't a decentralization threat, just allows cheaper access to helpful search terms). tokenId/newAircraftId returns owner, which can be used to find the other information
 
