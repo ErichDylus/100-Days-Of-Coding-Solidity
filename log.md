@@ -1,6 +1,6 @@
 # 100 Days Of Code - Solidity - Log
 
-### Day 30: July 4, Friday
+### Day 30: July 4, Saturday
 **Today's Progress**: global variables and start Lottery.sol in udemy course, review data and msg intricacies
 
 **Thoughts**: back to basics for refresher, next overview on arrays will be good review for AircraftToken.sol
