@@ -1,9 +1,9 @@
 # 100 Days Of Code - Solidity - Log
 
 ### Day 31: July 7, Tuesday
-**Today's Progress**: tuneups to AircraftToken.sol, Udemy course lessons on data structures
+**Today's Progress**: burn function and other tuneups to AircraftToken.sol, Udemy course lessons on data structures
 
-**Thoughts**: some more finishing touches to put on the AircraftToken code before publishing
+**Thoughts**: some more finishing touches to put on the AircraftToken code before publishing, including removing aircraft details after token burned
 
 ### Day 30: July 4, Saturday
 **Today's Progress**: global variables and start Lottery.sol in udemy course, review data and msg intricacies
