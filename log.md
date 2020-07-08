@@ -1,5 +1,10 @@
 # 100 Days Of Code - Solidity - Log
 
+### Day 32: July 8, Wednesday
+**Today's Progress**: solidity array issues: nested arrays do not port over, etc., continuing lottery contract
+
+**Thoughts**: important to realize strings are represented as dynamic arrays in solidity, so cannot transfer arrays of strings to javascript
+
 ### Day 31: July 7, Tuesday
 **Today's Progress**: burn function and other tuneups to AircraftToken.sol, Udemy course lessons on data structures
 
