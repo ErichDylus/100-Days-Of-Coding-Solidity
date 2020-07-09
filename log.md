@@ -1,9 +1,9 @@
 # 100 Days Of Code - Solidity - Log
 
 ### Day 33: July 9, Thursday
-**Today's Progress**: pseudo-random number generator for lottery contract, edits to AircraftToken
+**Today's Progress**: pseudo-random number generator for lottery contract, edits to AircraftToken, use pseudo-rand number modulus players array length to choose lottery winner
 
-**Thoughts**: would be interesting to try and include chainlink's VRF here
+**Thoughts**: would be interesting to try and include chainlink's VRF here, will attempt later
 
 ### Day 32: July 8, Wednesday
 **Today's Progress**: solidity array issues: nested arrays do not port over, etc., continuing lottery contract
