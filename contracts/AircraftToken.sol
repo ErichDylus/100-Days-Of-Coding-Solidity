@@ -6,7 +6,8 @@ import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contr
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/access/Ownable.sol";
 
 // **********WORK IN PROGRESS -- USE AT OWN RISK**********
-// @dev: create an ERC721 NFT for an N-registered aircraft, for purposes of the FAA Registry
+// @dev: create an ERC721 standard NFT for an N-registered aircraft, for purposes of the FAA Registry
+// owner would theoretically be the FAA, who could mint NFTs for each new registration and burn upon deregistration/N-number change/owner change, etc.
 
 contract AircraftToken is ERC721, Ownable {
 
@@ -35,8 +36,8 @@ contract AircraftToken is ERC721, Ownable {
   Aircraft[] public aircraft;
   uint i = 0;
   
-  // @dev Initializing an ERC-721 standard token named 'AircraftToken' with a symbol 'FAA'
-  constructor() ERC721("FAAToken", "FAA") public {
+  // @dev Initializing an ERC-721 standard token named 'NRegAircraftToken' with a symbol 'FAA'
+  constructor() ERC721("NRegAircraftToken", "FAA") public {
   }
 
   // fallback function
@@ -52,8 +53,6 @@ contract AircraftToken is ERC721, Ownable {
         bool _lienExists, 
         bool _fractionalOwner
         ) internal returns (uint, uint) {
-    
-    // may change to onlyOwner, if intended for registry creation of NFT
     
     Aircraft memory newAircraft = Aircraft({
         aircraftOwner: _aircraftOwner,
@@ -95,7 +94,8 @@ contract AircraftToken is ERC721, Ownable {
         );
   }
   
-  // @dev Function to buy a new airraft token (calls createAircraft() with given parameters)
+  // @dev buy a new FAA NFT for at least .02 ether (calls createAircraft() with given parameters)
+  // NOTE: currently public for demonstration purposes, but could include onlyOwner to permit only the registry to create tokens, or require(whitelisted address)
   function buyRegToken(
         string calldata _model, 
         string calldata _nNumber, 
@@ -115,7 +115,4 @@ contract AircraftToken is ERC721, Ownable {
     
     //SEE: https://medium.com/openberry/erc721-vue-js-cryptokitties-like-dapp-in-under-10-minutes-5115efc9e0bb
     // newAircraftId must be non-replicable SEE https://ethereum.stackexchange.com/questions/9965/how-to-generate-a-unique-identifier-in-solidity
-    /*** may look into Uniform Resource Identifiers (URI) 
-    **** function tokenURI(uint256 _tokenId) external view returns (string);
-    *** RFC 3986 ERC721 Metadata JSON Schema **/
 }
