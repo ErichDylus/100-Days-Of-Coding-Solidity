@@ -1,5 +1,10 @@
 # 100 Days Of Code - Solidity - Log
 
+### Day 34: July 10, Friday
+**Today's Progress**: completed lottery contract with pickWinner, modifier, view array, transfer balance, and create new players array upon winner picked
+
+**Thoughts**: the 'payable(players[index]).transfer(address(this).balance);' line of code is useful for emptying an escrow to the chosen address ('index') in array
+
 ### Day 33: July 9, Thursday
 **Today's Progress**: pseudo-random number generator for lottery contract, edits to AircraftToken, use pseudo-rand number modulus players array length to choose lottery winner
 
