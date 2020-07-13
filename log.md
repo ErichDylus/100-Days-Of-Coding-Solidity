@@ -1,9 +1,14 @@
 # 100 Days Of Code - Solidity - Log
 
+### Day 35: July 13, Monday
+**Today's Progress**: Udemy course and receiving/sending value, cleanup of AircraftToken, read RNG docs
+
+**Thoughts**: Chainlink's VRF is a good goal implementation both for a random generator and generally as a first oracle implementation
+
 ### Day 34: July 10, Friday
 **Today's Progress**: completed lottery contract with pickWinner, modifier, view array, transfer balance, and create new players array upon winner picked
 
-**Thoughts**: the 'payable(players[index]).transfer(address(this).balance);' line of code is useful for emptying an escrow to the chosen address ('index') in array
+**Thoughts**: the 'payable(players[index]).transfer(address(this).balance);' line of code is useful for emptying an escrow to the chosen address ('index') in array BUT apparently transfer is deprecated for call? will need to investigate
 
 ### Day 33: July 9, Thursday
 **Today's Progress**: pseudo-random number generator for lottery contract, edits to AircraftToken, use pseudo-rand number modulus players array length to choose lottery winner
