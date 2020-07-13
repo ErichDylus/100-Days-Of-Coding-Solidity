@@ -5,9 +5,10 @@ pragma solidity ^0.6.0;
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/token/ERC721/ERC721.sol";
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/access/Ownable.sol";
 
-// **********WORK IN PROGRESS -- USE AT OWN RISK**********
+// **********WORK IN PROGRESS / DEMONSTRATION PURPOSES ONLY -- USE AT OWN RISK**********
 // @dev: create an ERC721 standard NFT for an N-registered aircraft, for purposes of the FAA Registry
-// owner would theoretically be the FAA, who could mint NFTs for each new registration and burn upon deregistration/N-number change/owner change, etc.
+// contract owner would theoretically be the FAA, who could mint NFTs for each new registration and burn upon deregistration/N-number change/owner change, etc.
+// as currently written, anyone may create an NFT for demonstration purposes, but adding onlyOwner modifier would restrict to the contract owner
 
 contract AircraftToken is ERC721, Ownable {
 
@@ -36,8 +37,8 @@ contract AircraftToken is ERC721, Ownable {
   Aircraft[] public aircraft;
   uint i = 0;
   
-  // @dev Initializing an ERC-721 standard token named 'NRegAircraftToken' with a symbol 'FAA'
-  constructor() ERC721("NRegAircraftToken", "FAA") public {
+  // @dev Initializing an ERC-721 standard token named 'FAA Registry Aircraft Token' with a symbol 'FAA'
+  constructor() ERC721("FAA Registry Aircraft Token", "FAA") public {
   }
 
   // fallback function
@@ -65,6 +66,7 @@ contract AircraftToken is ERC721, Ownable {
     });
     
     // @dev create unique aircraft identifier based on owner reg ID, i number and msn
+    // see: https://ethereum.stackexchange.com/questions/9965/how-to-generate-a-unique-identifier-in-solidity
     uint newAircraftId = uint(keccak256(abi.encodePacked(_regId + i + _msn)));
     aircraft.push(Aircraft(_aircraftOwner, _model, _nNumber,  _regId, _msn, _lienExists, _fractionalOwner));
     i++;
@@ -94,8 +96,9 @@ contract AircraftToken is ERC721, Ownable {
         );
   }
   
-  // @dev buy a new FAA NFT for at least .02 ether (calls createAircraft() with given parameters)
-  // NOTE: currently public for demonstration purposes, but could include onlyOwner to permit only the registry to create tokens, or require(whitelisted address)
+  // @dev buy a new FAA NFT for at least .01 ether (calls createAircraft() with given details)
+  // may be purchased by any address for demonstration purposes, but could include onlyOwner to permit only the registry to create tokens, or require(whitelisted address)
+  // if onlyOwner is used, need to change the address in _createAircraft call from msg.sender to the aircraft owner's address, as the Registry would be msg.sender
   function buyRegToken(
         string calldata _model, 
         string calldata _nNumber, 
@@ -104,7 +107,7 @@ contract AircraftToken is ERC721, Ownable {
         bool _lienExists, 
         bool _fractionalOwner
         ) external payable returns(uint) {
-    require(msg.value >= 0.02 ether);
+    require(msg.value >= 0.01 ether);
     _createAircraft(msg.sender, _model, _nNumber, _regId, _msn, _lienExists, _fractionalOwner);
     }
     
@@ -113,6 +116,4 @@ contract AircraftToken is ERC721, Ownable {
         _burn(_tokenId);
     }
     
-    //SEE: https://medium.com/openberry/erc721-vue-js-cryptokitties-like-dapp-in-under-10-minutes-5115efc9e0bb
-    // newAircraftId must be non-replicable SEE https://ethereum.stackexchange.com/questions/9965/how-to-generate-a-unique-identifier-in-solidity
 }
