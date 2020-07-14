@@ -1,5 +1,8 @@
 # 100 Days Of Code - Solidity - Log
 
+### Day 36: July 14, Tuesday
+**Today's Progress**: contract testing via javascript/git over my head and seemingly unnecessary for now-- will test manually for near future
+
 ### Day 35: July 13, Monday
 **Today's Progress**: Udemy course and receiving/sending value, cleanup of AircraftToken, read RNG docs
 
