@@ -1,7 +1,13 @@
 # 100 Days Of Code - Solidity - Log
 
+### Day 38: July 17, Friday
+**Today's Progress**: NFT minting with cargo.build: https://alpha.cargo.build/dashboard/showcase/5f120c4073ca94140d75c084, migrating aircraft sale agreement from OpenLaw
+
+**Thoughts**: very easy to mint NFTs with details, pictures, etc. Will need to test public visibility and whether another frontend can be used
+
 ### Day 37: July 15, Wednesday
 **Today's Progress**: Ethereum app architecture and intro to React
+
 **Thoughts**: React will bypass difficult javascript
 
 ### Day 36: July 14, Tuesday
