@@ -1,5 +1,8 @@
 # 100 Days Of Code - Solidity - Log
 
+### Day 39: July 18, Saturday
+**Today's Progress**: reading through OpenZeppelin learn and OpenZeppelin CLI regarding upgradeable contracts
+
 ### Day 38: July 17, Friday
 **Today's Progress**: NFT minting with cargo.build: https://alpha.cargo.build/dashboard/showcase/5f120c4073ca94140d75c084, migrating aircraft sale agreement from OpenLaw
 
