@@ -1,5 +1,10 @@
 # 100 Days Of Code - Solidity - Log
 
+### Day 40: July 20, Monday
+**Today's Progress**: mapping out "campaign" kickstarter contract, defining structs, note translations for escrow purpose
+
+**Thoughts**: going forward, note methods for voting on funds release from escrow and constructed minimum escrow amount
+
 ### Day 39: July 18, Saturday
 **Today's Progress**: reading through OpenZeppelin learn and OpenZeppelin CLI regarding upgradeable contracts
 
