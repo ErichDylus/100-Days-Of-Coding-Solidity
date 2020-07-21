@@ -1,5 +1,8 @@
 # 100 Days Of Code - Solidity - Log
 
+### Day 41: July 21, Tuesday
+**Today's Progress**: storage v. memory considerations, structs continued, other campaign.sol edits
+
 ### Day 40: July 20, Monday
 **Today's Progress**: mapping out "campaign" kickstarter contract, defining structs, note translations for escrow purpose
 
