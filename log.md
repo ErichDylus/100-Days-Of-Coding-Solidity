@@ -1,5 +1,10 @@
 # 100 Days Of Code - Solidity - Log
 
+### Day 42: July 23, Thursday
+**Today's Progress**: coding spendingRequest, continue storage v. memory and mapping as gas saver
+
+**Thoughts**: mappings as key-value pairs are similar to objects in javascript, constant time search is important
+
 ### Day 41: July 21, Tuesday
 **Today's Progress**: storage v. memory considerations, structs continued, other campaign.sol edits
 
