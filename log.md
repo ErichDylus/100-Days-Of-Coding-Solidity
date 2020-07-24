@@ -1,5 +1,8 @@
 # 100 Days Of Code - Solidity - Log
 
+### Day 43: July 24, Friday
+**Today's Progress**: Struct initialization and mappings in campaign.sol
+
 ### Day 42: July 23, Thursday
 **Today's Progress**: coding spendingRequest, continue storage v. memory and mapping as gas saver
 
