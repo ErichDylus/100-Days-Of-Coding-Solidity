@@ -1,5 +1,10 @@
 # 100 Days Of Code - Solidity - Log
 
+### Day 44: July 25, Saturday
+**Today's Progress**: local memory structs and mappings to clean up code
+
+**Thoughts**: cleaning up AdvanceRequirement and other arrays of structs will be a useful exercise
+
 ### Day 43: July 24, Friday
 **Today's Progress**: Struct initialization and mappings in campaign.sol
 
