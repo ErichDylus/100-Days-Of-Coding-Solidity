@@ -7,7 +7,7 @@ contract Campaign {
   struct Request {
       string description;
       uint value;
-      address recipient;
+      address payable recipient;
       bool complete;
       uint approvalCount;
       mapping(address => bool) approvals;
@@ -16,6 +16,7 @@ contract Campaign {
   Request[] public requests;
   address public manager;
   uint minimumContribution;
+  uint public approversCount;
   mapping(address => bool) public approvers;
   
   modifier restricted() {
@@ -31,15 +32,16 @@ contract Campaign {
   function contribute() public payable {
       require(msg.value > minimumContribution);
       approvers[msg.sender] = true;
+      approversCount++;
   }
   
-  function createRequest(string memory description, uint value, address recipient) public restricted {
+  function createRequest(string memory description, uint value, address payable recipient) public restricted {
       Request memory newRequest = Request({
          description: description,
          value: value,
          recipient: recipient,
          complete: false,
-         approvalCount  = 0
+         approvalCount: 0
       });
       requests.push(newRequest);
   }
@@ -50,5 +52,13 @@ contract Campaign {
       require(!request.approvals[msg.sender]);
       request.approvals[msg.sender] = true;
       request.approvalCount++;
+  }
+  
+  function finalizeRequest(uint index) public restricted {
+      Request storage request = requests[index];
+      require(request.approvalCount > (approversCount / 2));
+      require(!request.complete);
+      request.recipient.transfer(request.value);
+      request.complete = true;
   }
 }
