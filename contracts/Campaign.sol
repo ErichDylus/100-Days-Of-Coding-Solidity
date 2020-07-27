@@ -2,6 +2,19 @@ pragma solidity ^0.6.0;
 
 // in process, not recommended to be used for any purpose
 
+contract CampaignFactory {
+    address[] public deployedCampaigns;
+    
+    function createCampaign(uint minimum) public {
+        address newCampaign = address(new Campaign(minimum, msg.sender));
+        deployedCampaigns.push(newCampaign);
+    }
+    
+    function getDeployedCampaigns() public view returns (address[] memory) {
+        return deployedCampaigns;
+    }
+}
+
 contract Campaign {
 
   struct Request {
@@ -18,14 +31,13 @@ contract Campaign {
   uint minimumContribution;
   uint public approversCount;
   mapping(address => bool) public approvers;
-  
   modifier restricted() {
     require(msg.sender == manager);
     _;
   }
   
-  constructor(uint minimum) public {
-      manager = msg.sender;
+  constructor(uint minimum, address creator) public {
+      manager = creator;
       minimumContribution = minimum;
   }
   
