@@ -1,5 +1,10 @@
 # 100 Days Of Code - Solidity - Log
 
+### Day 45: July 27, Monday
+**Today's Progress**: deployment considerations (creating factory within contract) and creating CampaignFactory.sol to mitigate security risks of creator tampering with Campaign.sol
+
+**Thoughts**: more deprecations from Udemy course- typecasting address of the created campaign as follows: "address newCampaign = address(new Campaign(minimum, msg.sender));"
+
 ### Day 44: July 25, Saturday
 **Today's Progress**: local memory structs and mappings to clean up code
 
