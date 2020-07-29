@@ -1,5 +1,10 @@
 # 100 Days Of Code - Solidity - Log
 
+### Day 46: July 29, Wednesday
+**Today's Progress**: coding Escrow.sol, adapting Campaign.sol to an escrow contract initiated with a deposit amount, with mechanisms for approval by parties and release of funds once all approvals received
+
+**Thoughts**: next steps are to prevent any msg.sender from becoming a "party" if sending enough value-- perhaps change to agent's decision? also need to code a return deposit scenario
+
 ### Day 45: July 27, Monday
 **Today's Progress**: deployment considerations (creating factory within contract) and creating CampaignFactory.sol to mitigate security risks of creator tampering with Campaign.sol
 
