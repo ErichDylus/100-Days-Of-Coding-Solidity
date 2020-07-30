@@ -1,5 +1,10 @@
 # 100 Days Of Code - Solidity - Log
 
+### Day 47: July 30, Thursday
+**Today's Progress**: revising Escrow.sol to properly increment parties and bool approvers
+
+**Thoughts**: in addition to thoughts below, need to initiate Escrow contract with Escrow Factory deposit payment 
+
 ### Day 46: July 29, Wednesday
 **Today's Progress**: coding Escrow.sol, adapting Campaign.sol to an escrow contract initiated with a deposit amount, with mechanisms for approval by parties and release of funds once all approvals received
 
