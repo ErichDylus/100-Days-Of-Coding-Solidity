@@ -1,5 +1,10 @@
 # 100 Days Of Code - Solidity - Log
 
+### Day 48: July 31, Friday
+**Today's Progress**: revising Escrow.sol to return deposit to agent and allow agent to approve parties in standalone function
+
+**Thoughts**: need to sort out the address payable issues in Factory and provide mechanism for funds to be returned to sender if deal terminated
+
 ### Day 47: July 30, Thursday
 **Today's Progress**: revising Escrow.sol to properly increment parties and bool approvers
 
