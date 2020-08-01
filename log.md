@@ -1,5 +1,8 @@
 # 100 Days Of Code - Solidity - Log
 
+### Day 49: August 1, Saturday
+**Today's Progress**: coding return purchase price - deposit to buyer if deal terminated and hard coding buyer as funds sender in escrow.sol, will need to test
+
 ### Day 48: July 31, Friday
 **Today's Progress**: revising Escrow.sol to return deposit to agent and allow agent to approve parties in standalone function
 
