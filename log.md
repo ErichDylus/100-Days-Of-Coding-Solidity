@@ -1,5 +1,8 @@
 # 100 Days Of Code - Solidity - Log
 
+### Day 50: August 4, Tuesday
+**Today's Progress**: reviewing DAO constructs and legal framings, reviewing yearn code and DeFi implementations as examples
+
 ### Day 49: August 1, Saturday
 **Today's Progress**: coding return purchase price - deposit to buyer if deal terminated and hard coding buyer as funds sender in escrow.sol, will need to test
 
