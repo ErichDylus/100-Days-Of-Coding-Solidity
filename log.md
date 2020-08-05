@@ -1,5 +1,8 @@
 # 100 Days Of Code - Solidity - Log
 
+### Day 51: August 5, Wednesday
+**Today's Progress**: revising Sale Agreement md for proper address references, commenting practices including in escrow contract
+
 ### Day 50: August 4, Tuesday
 **Today's Progress**: reviewing DAO constructs and legal framings, reviewing yearn code and DeFi implementations as examples
 
