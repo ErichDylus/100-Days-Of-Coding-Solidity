@@ -1,5 +1,10 @@
 # 100 Days Of Code - Solidity - Log
 
+### Day 52: August 6, Thursday
+**Today's Progress**: revising Escrow.sol for agent to specify funds recipient and fix escrow deposit mechanic
+
+**Thoughts**: still having issues with sendFunds() and whether sendEscrow() is necessary; also investigate whether .transfer() is the proper method
+
 ### Day 51: August 5, Wednesday
 **Today's Progress**: revising Sale Agreement md for proper address references, commenting practices including in escrow contract
 
