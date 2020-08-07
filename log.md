@@ -3,7 +3,7 @@
 ### Day 53: August 7, Friday
 **Today's Progress**: fix require() statements in sendFunds() to require input of the funding amount and msg.value to be >=; DAO structures and revisit some basics on interfaces
 
-**Thoughts**: next is fixing the escrows array and closeDeal/terminateDeal, may revisit the course to find where the error in index is
+**Thoughts**: next is fixing the escrows array and closeDeal/terminateDeal, also need to revising events and learn about bytes32
 
 ### Day 52: August 6, Thursday
 **Today's Progress**: revising Escrow.sol for agent to specify funds recipient and fix escrow deposit mechanic
