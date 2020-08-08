@@ -1,5 +1,10 @@
 # 100 Days Of Code - Solidity - Log
 
+### Day 54: August 8, Saturday
+**Today's Progress**: successfully fixed escrows[] and the constructor, succesfully completed a basic test of manual confirmation of closeDeal()
+
+**Thoughts**: next, check .transfer for closeDeal and terminateDeal; explain all require statement failures for user
+
 ### Day 53: August 7, Friday
 **Today's Progress**: fix require() statements in sendFunds() to require input of the funding amount and msg.value to be >=; DAO structures and revisit some basics on interfaces
 
