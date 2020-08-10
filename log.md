@@ -1,5 +1,8 @@
 # 100 Days Of Code - Solidity - Log
 
+### Day 55: August 10, Monday
+**Today's Progress**: reviewing permission in escrow.sol, require failures, further tests of errors; need to revisit .transfer functions as closeDeal() is still not working properly
+
 ### Day 54: August 8, Saturday
 **Today's Progress**: successfully fixed escrows[] and the constructor, succesfully completed a basic test of manual confirmation of closeDeal()
 
