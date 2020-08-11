@@ -1,5 +1,9 @@
 # 100 Days Of Code - Solidity - Log
 
+## Day 56: August 11, Tuesday
+**Today's Progress**: fix transfer functions to use escrowAddress.balance and testing transfer and errors
+**Thoughts**: it appears terminateDeal() did not properly return the deposit to agent, will need fixing
+
 ### Day 55: August 10, Monday
 **Today's Progress**: reviewing permission in escrow.sol, require failures, further tests of errors; need to revisit .transfer functions as closeDeal() is still not working properly
 
