@@ -1,7 +1,11 @@
 # 100 Days Of Code - Solidity - Log
 
+## Day 57: August 12, Wednesday
+**Today's Progress**: add events to escrow.sol, fixing terminateDeal() to return funds to buyer (if a different address than agent as assigned via sendFunds()), otherwise return to agent
+
 ## Day 56: August 11, Tuesday
 **Today's Progress**: fix transfer functions to use escrowAddress.balance and testing transfer and errors
+
 **Thoughts**: it appears terminateDeal() did not properly return the deposit to agent, will need fixing
 
 ### Day 55: August 10, Monday
