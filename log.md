@@ -1,5 +1,8 @@
 # 100 Days Of Code - Solidity - Log
 
+## Day 58: August 13, Thursday
+**Today's Progress**: revamp events in escrow.sol, revisit ethernaut, reading on bytes32
+
 ## Day 57: August 12, Wednesday
 **Today's Progress**: add events to escrow.sol, fixing terminateDeal() to return funds to buyer (if a different address than agent as assigned via sendFunds()), otherwise return to agent
 
