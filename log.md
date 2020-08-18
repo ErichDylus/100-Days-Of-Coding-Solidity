@@ -1,5 +1,8 @@
 # 100 Days Of Code - Solidity - Log
 
+## Day 59: August 18, Tuesday
+**Today's Progress**: review ChainlinkClient.sol and create Offchain.sol for first oracle contract tests, first will be ETH/USD price convert for escrow contract
+
 ## Day 58: August 13, Thursday
 **Today's Progress**: revamp events in escrow.sol, revisit ethernaut, reading on bytes32
 
