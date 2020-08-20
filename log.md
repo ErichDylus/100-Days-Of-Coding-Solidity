@@ -1,5 +1,8 @@
 # 100 Days Of Code - Solidity - Log
 
+## Day 60: August 20, Thursday
+**Today's Progress**: tests using USDConvert for escrow.sol, unsuccessful. Might be a bug or gas management
+
 ## Day 59: August 18, Tuesday
 **Today's Progress**: review ChainlinkClient.sol and create Offchain.sol for first oracle contract tests, first will be ETH/USD price convert for escrow contract
 
