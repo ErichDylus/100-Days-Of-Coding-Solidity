@@ -1,5 +1,8 @@
 # 100 Days Of Code - Solidity - Log
 
+## Day 61: August 21, Friday
+**Today's Progress**: update FAAToken for uint256 and require statements, test gas efficiencies, review lexDAO's LiteERC20
+
 ## Day 60: August 20, Thursday
 **Today's Progress**: tests using USDConvert for escrow.sol, unsuccessful. Might be a bug or gas management
 
