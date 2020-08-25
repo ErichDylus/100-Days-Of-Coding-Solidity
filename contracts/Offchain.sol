@@ -1,43 +1,34 @@
 pragma solidity ^0.6.0;
 
-//adapted from https://docs.chain.link/docs/existing-job-request#config 
+//uses Chainlink's ETH price feed, on Ropsten
+//adapted from https://docs.chain.link/docs/get-the-latest-price 
 
-import "https://github.com/smartcontractkit/chainlink/blob/develop/evm-contracts/src/v0.6/ChainlinkClient.sol";
+import "https://github.com/smartcontractkit/chainlink/evm-contracts/src/v0.6/interfaces/AggregatorInterface.sol";
 
-contract USDConvert is ChainlinkClient {
-    address private oracle;
-    bytes32 private jobId;
-    uint256 private fee;
-    
-    uint256 public ethereumPrice;
-    
+contract USDConvert {
+
+    AggregatorInterface internal priceFeed;
+
     /**
      * Network: Ropsten
-     * Oracle: 
-     *      Name:           Omniscience Ropsten
-     *      Listing URL:    https://market.link/nodes/57587577-8ded-4d56-bb89-14da301e71cb
-     *      Address:        0x83dA1beEb89Ffaf56d0B7C50aFB0A66Fb4DF8cB1
-     * Job: 
-     *      Name:           ETH-USD CoinGecko
-     *      Listing URL:    https://market.link/jobs/d630df4f-1ed1-449b-8c0b-c27ab7a581a2
-     *      ID:             93547cb3c6784ec08a366be6211caa24
-     *      Fee:            0.1 LINK
+     * Aggregator: ETH/USD
+     * Address: 0x8468b2bDCE073A157E560AA4D9CcF6dB1DB98507
      */
     constructor() public {
-        setPublicChainlinkToken();
-        oracle = 0x83dA1beEb89Ffaf56d0B7C50aFB0A66Fb4DF8cB1; // oracle address
-        jobId = "93547cb3c6784ec08a366be6211caa24"; //job id
-        fee = 0.1 * 10 ** 18; // 0.1 LINK
+        priceFeed = AggregatorInterface(0x8468b2bDCE073A157E560AA4D9CcF6dB1DB98507);
     }
-    
-    //make initial request
-    function requestEthereumPrice() public {
-        Chainlink.Request memory req = buildChainlinkRequest(jobId, address(this), this.fulfillEthereumPrice.selector);
-        sendChainlinkRequestTo(oracle, req, fee);
+  
+    /**
+     * Returns the latest price
+     */
+    function getLatestPrice() public view returns (int256) {
+        return priceFeed.latestAnswer();
     }
-    
-    //callback function
-    function fulfillEthereumPrice(bytes32 _requestId, uint256 _price) public recordChainlinkFulfillment(_requestId) {
-        ethereumPrice = _price;
+
+    /**
+     * Returns the timestamp of the latest price update
+     */
+    function getLatestPriceTimestamp() public view returns (uint256) {
+        return priceFeed.latestTimestamp();
     }
 }
