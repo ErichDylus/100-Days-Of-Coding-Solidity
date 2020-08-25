@@ -1,4 +1,7 @@
-# 100 Days Of Code - Solidity - Log
+# 100 Days of Code - Solidity - Log
+
+## Day 62: August 25, Tuesday
+**Today's Progress**: continue working on including USD-ETH price coverter into escrow.sol
 
 ## Day 61: August 21, Friday
 **Today's Progress**: update FAAToken for uint256 and require statements, test gas efficiencies, review lexDAO's LiteERC20
