@@ -3,7 +3,7 @@ pragma solidity ^0.6.0;
 //uses Chainlink's ETH price feed, on Ropsten
 //adapted from https://docs.chain.link/docs/get-the-latest-price 
 
-import "https://github.com/smartcontractkit/chainlink/evm-contracts/src/v0.6/interfaces/AggregatorInterface.sol";
+import "https://github.com/smartcontractkit/chainlink/blob/develop/evm-contracts/src/v0.6/interfaces/AggregatorInterface.sol";
 
 contract USDConvert {
 
