@@ -1,5 +1,8 @@
 # 100 Days of Code - Solidity - Log
 
+## Day 63: August 27, Thursday
+**Today's Progress**: escrow.sol successfully deployed and terminated on Ropsten but not properly translating price from USD to ETH because of floats.
+
 ## Day 62: August 25, Tuesday
 **Today's Progress**: continue working on including USD-ETH price coverter into escrow.sol
 
