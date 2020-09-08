@@ -1,5 +1,8 @@
 # 100 Days of Code - Solidity - Log
 
+## Day 64: September 8, Tuesday
+**Today's Progress**: coded ToDoList.sol to create simple ToDo list, client-side uncompleted
+
 ## Day 63: August 27, Thursday
 **Today's Progress**: escrow.sol successfully deployed and terminated on Ropsten but not properly translating price from USD to ETH because of floats; issues with deployment on Ropsten (may be a Ropsten issue)
 
