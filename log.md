@@ -1,5 +1,8 @@
 # 100 Days of Code - Solidity - Log
 
+## Day 65: September 9, Wednesday
+**Today's Progress**: reviewing override and virtual functions, random numbers. Ropsten still down for escrow.sol testing
+
 ## Day 64: September 8, Tuesday
 **Today's Progress**: coded ToDoList.sol to create simple ToDo list, client-side uncompleted
 
