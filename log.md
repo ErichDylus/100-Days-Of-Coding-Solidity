@@ -1,5 +1,8 @@
 # 100 Days of Code - Solidity - Log
 
+## Day 66: September 10, Thursday
+**Today's Progress**: change price feed in escrow.sol to Kovan for testing, still unable to construct, might be gas error but unsure
+
 ## Day 65: September 9, Wednesday
 **Today's Progress**: reviewing override and virtual functions, random numbers. Ropsten still down for escrow.sol testing
 
