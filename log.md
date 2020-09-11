@@ -1,5 +1,8 @@
 # 100 Days of Code - Solidity - Log
 
+## Day 67: September 11, Friday
+**Today's Progress**: create Vote.sol to experiment with bytes32 -- having issues encoding inputs but may be a Remix issue.
+
 ## Day 66: September 10, Thursday
 **Today's Progress**: change price feed in escrow.sol to Kovan for testing, still unable to construct, might be gas error but unsure
 
