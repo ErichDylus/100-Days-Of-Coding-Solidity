@@ -1,5 +1,8 @@
 # 100 Days of Code - Solidity - Log
 
+## Day 68: September 12, Saturday
+**Today's Progress**: revamp vote.sol to take a string input for candidate names, will need to translate the bytes32 inputs for the other functions and limit to one vote per address
+
 ## Day 67: September 11, Friday
 **Today's Progress**: create Vote.sol to experiment with bytes32 -- having issues encoding inputs but may be a Remix issue.
 
