@@ -1,5 +1,10 @@
 # 100 Days of Code - Solidity - Log
 
+## Day 69: September 16, Wednesday
+**Today's Progress**: successful tests of escrow.sol on Kovan, using $ deposit/price input parameters and conversion to wei
+
+**Thoughts**: need to look into best practices for math on converting dollars to wei-- floats are rounded off so it results in an imprecise wei calculation
+
 ## Day 68: September 12, Saturday
 **Today's Progress**: revamp vote.sol to take a string input for candidate names, will need to translate the bytes32 inputs for the other functions and limit to one vote per address
 
