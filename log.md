@@ -1,5 +1,8 @@
 # 100 Days of Code - Solidity - Log
 
+## Day 70: September 17, Thursday
+**Today's Progress**: txn tests, nonce customizations for cancels, further escrow tests on kovan
+
 ## Day 69: September 16, Wednesday
 **Today's Progress**: successful tests of escrow.sol on Kovan, using $ deposit/price input parameters and conversion to wei
 
