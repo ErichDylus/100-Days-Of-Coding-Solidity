@@ -1,5 +1,8 @@
 # 100 Days of Code - Solidity - Log
 
+## Day 71: September 19, Saturday
+**Today's Progress**: further bytes32 testing and gas considerations, safemath testing
+
 ## Day 70: September 17, Thursday
 **Today's Progress**: txn tests, nonce customizations for cancels, further escrow tests on kovan
 
