@@ -1,5 +1,8 @@
 # 100 Days of Code - Solidity - Log
 
+## Day 72: September 21, Monday
+**Today's Progress**: experimenting with bytes32, reading on ufixed8x1 and other fixed point library adaptations such as [this fixed library](https://github.com/abdk-consulting/abdk-libraries-solidity/blob/master/ABDKMath64x64.sol)
+
 ## Day 71: September 19, Saturday
 **Today's Progress**: further bytes32 testing and gas considerations, safemath testing
 
