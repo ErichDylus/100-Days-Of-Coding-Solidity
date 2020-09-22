@@ -1,5 +1,8 @@
 # 100 Days of Code - Solidity - Log
 
+## Day 73, September 22, Tuesday
+**Today's Progress**: coding expirationdate.sol, which bools to true after inputted number of days until expiration (in seconds after constructed)
+
 ## Day 72: September 21, Monday
 **Today's Progress**: experimenting with bytes32, reading on ufixed8x1 and other fixed point library adaptations such as [this fixed library](https://github.com/abdk-consulting/abdk-libraries-solidity/blob/master/ABDKMath64x64.sol)
 
