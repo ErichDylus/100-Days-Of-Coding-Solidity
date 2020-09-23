@@ -14,6 +14,8 @@ contract Expiration {
     uint32 constant DAY_IN_SECONDS = 86400;
     bool isExpired;
     
+    event Expired(uint256 expirationTime, bool isExpired);
+    
     constructor() public {
         effectiveTime = now;
         isExpired = false;
@@ -31,9 +33,11 @@ contract Expiration {
     function checkIfExpired() public returns(bool){
         if (expirationTime <= now) {
             isExpired = true;
+            emit Expired(expirationTime, isExpired);
         } else {
             isExpired = false;
         }
+        
         return(isExpired);
     }
 }
