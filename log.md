@@ -1,5 +1,8 @@
 # 100 Days of Code - Solidity - Log
 
+## Day 74, September 23, Wednesday
+**Today's Progress**: further coding and testing expirationdate.sol, including events and emits. Calendar days currently the best implementation, may work into Escrow.sol directly.
+
 ## Day 73, September 22, Tuesday
 **Today's Progress**: coding expirationdate.sol, which bools to true after inputted number of days until expiration (in seconds after constructed)
 
