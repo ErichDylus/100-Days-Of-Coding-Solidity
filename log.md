@@ -1,5 +1,8 @@
 # 100 Days of Code - Solidity - Log
 
+## Day 75, September 25, Friday
+**Today's Progress**: review and replicate various codebases including yearn, lexDAO, API3; inherit issues and type explicitness
+
 ## Day 74, September 23, Wednesday
 **Today's Progress**: further coding and testing expirationdate.sol, including events and emits. Calendar days currently the best implementation, may work into Escrow.sol directly.
 
