@@ -1,5 +1,9 @@
 # 100 Days of Code - Solidity - Log
 
+## Day 76, September 27, Sunday
+**Today's Progress**: work an expiration date concept into escrow.sol by adapting expirationdate.sol, will need some testing, including as to events and whether a separate Expired() event is necessary.
+**Thoughts**: escrow.sol is quite bulky, can look into streamlining some of the functions and removing the "factory" as it's likely unnecessary. Better for risk management to use a new contract for each escrow anyway.
+
 ## Day 75, September 25, Friday
 **Today's Progress**: review and replicate various codebases including yearn, lexDAO, API3; inherit issues and type explicitness
 
