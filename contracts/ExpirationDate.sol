@@ -2,7 +2,8 @@ pragma solidity ^0.6.0;
 
 import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/math/SafeMath.sol";
 
-// set expired to true after inputted number of calendar days until expiration
+//simple expiration date boolean, input term length in calendar days
+//@dev set expired to true after inputted number of calendar days until expiration
 
 contract Expiration {
     
@@ -18,15 +19,11 @@ contract Expiration {
     event Expired(uint256 expirationTime, bool isExpired);
     
     constructor(uint8 _daysUntilExpiration) public {
+        require(_daysUntilExpiration > 0,"Expiry Date cannot be today");
         effectiveTime = now;
         isExpired = false;
         expirationTime = effectiveTime + (DAY_IN_SECONDS * uint256(_daysUntilExpiration));
     }
-    
-    /*function inputTerm(uint8 _daysUntilExpiration) public returns(uint256){
-        expirationTime = effectiveTime + uint256(DAY_IN_SECONDS * uint32(_daysUntilExpiration));
-        return(expirationTime);
-    }*/
     
     function checkExpiryTime() public returns(uint256, uint256){
         daysUntilExpiry = ((expirationTime - now)/DAY_IN_SECONDS);
