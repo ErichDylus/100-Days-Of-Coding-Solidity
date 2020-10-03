@@ -1,5 +1,8 @@
 # 100 Days of Code - Solidity - Log
 
+## Day 78, October 3, Saturday
+**Today's Progress**: bytes32 and randomness testing, edits to voting.sol
+
 ## Day 77, September 30, Wednesday
 **Today's Progress**: revising expirationdate.sol and escrow.sol to streamline and return the calendar days remaining until expiry
 
