@@ -1,5 +1,8 @@
 # 100 Days of Code - Solidity - Log
 
+## Day 79, October 6, Tuesday
+**Today's Progress**: comparing addresses and more intricate modifers; editing escrow.sol for expiration termiation
+
 ## Day 78, October 3, Saturday
 **Today's Progress**: bytes32 and randomness testing, edits to Lottery.sol in string to bytes32 conversion
 
