@@ -1,5 +1,10 @@
 # 100 Days of Code - Solidity - Log
 
+## Day 80, October 7, Wednesday
+**Today's Progress**: testing with calldata, including efficiencies and gas savings; updated advancerequirement.sol, will look through existing contracts for more efficiencies.
+
+**Thoughts**: by changing one function input to calldata & external, and one other function to external, I saved 1277879 -> 1259170 gas in constructor transaction cost and 926135 -> 912122 gas in execution cost. Simple change for some efficiency, but will need to ensure there are no tradeoffs. 
+
 ## Day 79, October 6, Tuesday
 **Today's Progress**: comparing addresses and more intricate modifers; editing escrow.sol for expiration termiation
 
