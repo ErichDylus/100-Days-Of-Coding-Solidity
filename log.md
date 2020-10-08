@@ -1,5 +1,8 @@
 # 100 Days of Code - Solidity - Log
 
+## Day 81, October 8, Thursday
+**Today's Progress**: reading on upgradeable contracts, further calldata testing, reviewing audius code
+
 ## Day 80, October 7, Wednesday
 **Today's Progress**: testing with calldata, including efficiencies and gas savings; updated advancerequirement.sol, will look through existing contracts for more efficiencies.
 
