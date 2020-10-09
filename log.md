@@ -1,5 +1,8 @@
 # 100 Days of Code - Solidity - Log
 
+## Day 82, October 9, Friday
+**Today's Progress**: more calldata and other type gas tests, upgradeable.sol; lexdao code reviews and summaries
+
 ## Day 81, October 8, Thursday
 **Today's Progress**: reading on upgradeable contracts, further calldata testing, reviewing audius code
 
