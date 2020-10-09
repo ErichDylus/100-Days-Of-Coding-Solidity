@@ -18,7 +18,7 @@ contract Test {
     }
     
     //testing if calldata can be sent to internal functions, successful
-    function internalTest(string calldata _internalCall) internal returns (string memory) {
+    function internalTest(string calldata _internalCall) internal {
         callTest = _internalCall;
     }
 }
