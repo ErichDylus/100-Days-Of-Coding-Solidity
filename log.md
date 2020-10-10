@@ -1,5 +1,8 @@
 # 100 Days of Code - Solidity - Log
 
+## Day 83, October 10, Saturday
+**Today's Progress**: code review and gas tests with arrays, reading on security audit best practices and upgradeable contracts
+
 ## Day 82, October 9, Friday
 **Today's Progress**: more calldata and other type gas tests, upgradeable.sol; lexdao code reviews and summaries
 
