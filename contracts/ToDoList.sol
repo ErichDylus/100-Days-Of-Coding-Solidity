@@ -20,10 +20,10 @@ contract TodoList {
         createTask("Learn more Solidity");
       }
     
-    function createTask(string memory _content) public {
+    function createTask(string memory _newTask) public {
         taskCount++;
-        tasks[taskCount] = Task(taskCount, _content, false);
-        emit TaskCreated(taskCount, _content, false);
+        tasks[taskCount] = Task(taskCount, _newTask, false);
+        emit TaskCreated(taskCount, _newTask, false);
     }
     
     function toggleCompleted(uint16 _id) public {
