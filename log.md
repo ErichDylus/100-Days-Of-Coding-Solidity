@@ -1,5 +1,8 @@
 # 100 Days of Code - Solidity - Log
 
+## Day 84, October 12, Monday
+**Today's Progress**: WETH contract and double mappings, wad syntax, permit() replacement for approve txs: https://github.com/wETH-v2/wETH-v2/blob/54615bbfad5079f513955df335997996829e0932/contracts/WETH10.sol 
+
 ## Day 83, October 10, Saturday
 **Today's Progress**: code review and gas tests with arrays, reading on security audit best practices and upgradeable contracts
 
