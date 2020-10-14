@@ -1,5 +1,8 @@
 # 100 Days of Code - Solidity - Log
 
+## Day 85, October 14, Wednesday
+**Today's Progress**: testing Arbitrum Rollups on Kovan and token bridges/interop considerations; reviewing mappings
+
 ## Day 84, October 12, Monday
 **Today's Progress**: WETH contract and double mappings, wad syntax, permit() replacement for approve txs: https://github.com/wETH-v2/wETH-v2/blob/54615bbfad5079f513955df335997996829e0932/contracts/WETH10.sol 
 
