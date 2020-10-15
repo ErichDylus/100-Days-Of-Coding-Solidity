@@ -1,5 +1,8 @@
 # 100 Days of Code - Solidity - Log
 
+## Day 86, October 15, Thursday
+**Today's Progress**: further multi-mappings tests, permit() replacement, bytes32 efficiencies; drafting lexdao substack article
+
 ## Day 85, October 14, Wednesday
 **Today's Progress**: testing Arbitrum Rollups on Kovan and token bridges/interop considerations; reviewing mappings
 
