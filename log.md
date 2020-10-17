@@ -1,5 +1,8 @@
 # 100 Days of Code - Solidity - Log
 
+## Day 87, October 17, Saturday
+**Today's Progress**: work with events, revising escrow.sol to clean up array issues, reviewing lexlocker
+
 ## Day 86, October 15, Thursday
 **Today's Progress**: further multi-mappings tests, permit() replacement, bytes32 efficiencies; drafting lexdao substack article
 
