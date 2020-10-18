@@ -1,5 +1,8 @@
 # 100 Days of Code - Solidity - Log
 
+## Day 88, October 18, Sunday
+**Today's Progress**: revise index process in escrow.sol, review [Solidity keyword index](https://solidity.readthedocs.io/en/v0.7.3/genindex.html) and interfaces
+
 ## Day 87, October 17, Saturday
 **Today's Progress**: work with events, revising escrow.sol to clean up array issues, reviewing lexlocker
 
