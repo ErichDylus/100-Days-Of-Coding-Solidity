@@ -1,5 +1,8 @@
 # 100 Days of Code - Solidity - Log
 
+## Day 89, October 19, Monday
+**Today's Progress**: revisit upgradeability in solidity, private v. internal considerations and gas, more review of solidity keywords
+
 ## Day 88, October 18, Sunday
 **Today's Progress**: revise index process in escrow.sol, review [Solidity keyword index](https://solidity.readthedocs.io/en/v0.7.3/genindex.html) and interfaces
 
