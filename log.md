@@ -1,5 +1,8 @@
 # 100 Days of Code - Solidity - Log
 
+## Day 90, October 21, Wednesday
+**Today's Progress**: review libraries and globally available variables including msg.sig, gasleft()
+
 ## Day 89, October 19, Monday
 **Today's Progress**: revisit upgradeability in solidity, private v. internal considerations and gas, more review of solidity keywords
 
