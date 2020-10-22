@@ -13,6 +13,7 @@ contract Expiration {
     uint256 effectiveTime;
     uint256 expirationTime;
     uint256 daysUntilExpiry;
+    uint256 secondsUntilExpiry;
     uint256 constant DAY_IN_SECONDS = 86400;
     bool isExpired;
     
@@ -25,9 +26,11 @@ contract Expiration {
         expirationTime = effectiveTime + (DAY_IN_SECONDS * uint256(_daysUntilExpiration));
     }
     
-    function checkExpiryTime() public returns(uint256, uint256){
+    function checkExpiryTime() public returns(uint256, uint256, uint256){
         daysUntilExpiry = ((expirationTime - now)/DAY_IN_SECONDS);
-        return(daysUntilExpiry, expirationTime);
+        //seconds until expiry more precise, to avoid roundoff of the float in daysUntilExpiry
+        secondsUntilExpiry = expirationTime - now;
+        return(daysUntilExpiry, secondsUntilExpiry, expirationTime);
     }
     
     function checkIfExpired() public returns(bool){
