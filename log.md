@@ -1,5 +1,8 @@
 # 100 Days of Code - Solidity - Log
 
+## Day 91, October 22, Thursday
+**Today's Progress**: revisit float issues and mappings, work with libraries and upgradeability, NFT standard differences
+
 ## Day 90, October 21, Wednesday
 **Today's Progress**: review libraries and globally available variables including msg.sig, gasleft()
 
