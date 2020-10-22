@@ -1,6 +1,6 @@
 pragma solidity 0.6.9;
 
-//in progress and incomplete
+//incomplete & useless function and variable testing, etc.
 
 contract CallandMapTest {
 
@@ -10,7 +10,26 @@ contract CallandMapTest {
     address recipient = 0xb7f49E02552751b249caE86959fD50D887708B1D;
     mapping (address => mapping (address => uint256))  public  allowance;
     mapping(address => uint256) public balances;
-
+    mapping (address => uint) rollNo; 
+      
+    // Defining a function to use msg.sender to securely store roll no. 
+    function setRollNO(uint256 _myNumber) public { 
+        // Update our 'rollNo' mapping to store '_myNumber' under 'msg.sender' 
+        rollNo[msg.sender] = _myNumber; 
+    } 
+      
+    // Return the roll no. 
+    function whatIsMyRollNumber() public view returns (uint256) { 
+        // Retrieve the value stored in the sender's address, will be `0` if the sender hasn't called `setRollNO` yet 
+        return rollNo[msg.sender]; 
+    } 
+   
+   //can snoop roll number if you know the target's address
+   function snoopRollNumber(address _target) public view returns (uint256) { 
+        // Retrieve the value stored in the target address, will be `0` if asn't called `setRollNO` yet 
+        return rollNo[_target]; 
+    }
+   
    function updateBalance(uint256 newBalance) public {
       balances[msg.sender] = newBalance;
    }
@@ -22,13 +41,6 @@ contract CallandMapTest {
    } */
     
     
-    function memoryTest(string memory _exampleString) public returns (string memory) {
-        stringTest = _exampleString;  // You can modify memory
-        string memory newString = stringTest;  // You can use memory within a function's logic
-        return newString;  // You can return memory
-        // allowance[msg.sender][recipient] = 1;
-    }
-
     function calldataTest(string calldata _exampleString, string calldata _intTest) external returns (string memory, string memory) {
         stringTest = _exampleString;
         internalTest(_intTest);
