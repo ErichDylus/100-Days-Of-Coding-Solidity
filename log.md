@@ -1,5 +1,8 @@
 # 100 Days of Code - Solidity - Log
 
+## Day 92, October 23, Friday
+**Today's Progress**: math in Solidity, coding simple timelock escrow contract
+
 ## Day 91, October 22, Thursday
 **Today's Progress**: revisit float issues and mappings, work with libraries and upgradeability, NFT standard differences
 
