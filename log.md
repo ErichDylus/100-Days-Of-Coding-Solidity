@@ -1,5 +1,8 @@
 # 100 Days of Code - Solidity - Log
 
+## Day 93, October 25, Sunday
+**Today's Progress**: review transfer() and related issues (reentrancy-safe if it is the last call in a function and state already changed, as well as v0.7.0 changes ("now" deprecated for block.timestamp, visibility not needed in constructors, etc.). Will want to look more into micropayment channels (ex. [this example](https://solidity.readthedocs.io/en/develop/solidity-by-example.html) and Sablier streaming)
+
 ## Day 92, October 23, Friday
 **Today's Progress**: math in Solidity, coding simple timelock escrow contract
 
