@@ -1,5 +1,8 @@
 # 100 Days of Code - Solidity - Log
 
+## Day 94, October 26, Monday
+**Today's Progress**: working with bytes, tests and samczsun [Escaping the Dark Forest](https://samczsun.com/escaping-the-dark-forest/) examples
+
 ## Day 93, October 25, Sunday
 **Today's Progress**: review transfer() and related issues (reentrancy-safe if it is the last call in a function and state already changed, as well as v0.7.0 changes ("now" deprecated for block.timestamp, visibility not needed in constructors, etc.). Will want to look more into micropayment channels (ex. [this example](https://solidity.readthedocs.io/en/develop/solidity-by-example.html) and Sablier streaming)
 
