@@ -1,5 +1,8 @@
 # 100 Days of Code - Solidity - Log
 
+## Day 95, October 27, Tuesday
+**Today's Progress**: further bytes testing, begin experimenting with [wrapped NFTs](https://github.com/openlawteam/LAO-NFT/blob/master/contracts/NFTWrap.sol)
+
 ## Day 94, October 26, Monday
 **Today's Progress**: working with bytes, tests and samczsun [Escaping the Dark Forest](https://samczsun.com/escaping-the-dark-forest/) examples
 
