@@ -1,5 +1,8 @@
 # 100 Days of Code - Solidity - Log
 
+## Day 96, October 28, Wednesday
+**Today's Progress**: override v. virtual and interface contracts, [article here](https://medium.com/upstate-interactive/solidity-override-vs-virtual-functions-c0a5dfb83aaf), experimenting with NFT contract 
+
 ## Day 95, October 27, Tuesday
 **Today's Progress**: further bytes testing, begin experimenting with [wrapped NFTs](https://github.com/openlawteam/LAO-NFT/blob/master/contracts/NFTWrap.sol)
 
