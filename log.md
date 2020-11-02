@@ -1,5 +1,8 @@
 # 100 Days of Code - Solidity - Log
 
+## Day 97, November 2, Monday
+**Today's Progress**: experimenting with [signature parameters](https://solidity.readthedocs.io/en/v0.6.3/solidity-by-example.html) and offchain signatures (per [EIP-762](https://github.com/ethereum/EIPs/pull/712) using web3.js and Metamask; [selfdestruct()](https://solidity-by-example.org/0.6/hacks/self-destruct/)
+
 ## Day 96, October 28, Wednesday
 **Today's Progress**: override v. virtual and interface contracts, [article here](https://medium.com/upstate-interactive/solidity-override-vs-virtual-functions-c0a5dfb83aaf), experimenting with NFT contract 
 
