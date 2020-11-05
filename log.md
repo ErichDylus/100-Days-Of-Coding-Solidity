@@ -1,5 +1,8 @@
 # 100 Days of Code - Solidity - Log
 
+## Day 98, November 5, Thursday
+**Today's Progress**: timelock and selfdestruct edits, further reading on signature concatenation and bytes
+
 ## Day 97, November 2, Monday
 **Today's Progress**: experimenting with [signature parameters](https://solidity.readthedocs.io/en/v0.6.3/solidity-by-example.html) and offchain signatures (per [EIP-762](https://github.com/ethereum/EIPs/pull/712) using web3.js and Metamask; [selfdestruct()](https://solidity-by-example.org/0.6/hacks/self-destruct/)
 
