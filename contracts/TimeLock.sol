@@ -1,5 +1,7 @@
 pragma solidity ^0.6.0;
 
+//TEST BLOCK.TIMESTAMP ERRORS
+
 //FOR DEMONSTRATION ONLY, not recommended to be used for any purpose
 //@dev create a simple time-lock smart escrow contract for testing purposes denominated in seconds
 
@@ -76,7 +78,7 @@ contract TimeLock {
   function checkIfExpired() public returns(bool){
         if (expirationTime <= block.timestamp) {
             isExpired = true;
-            recipient.transfer(escrowAddress.balance);
+            selfdestruct(recipient);
         } else {
             isExpired = false;
         }
