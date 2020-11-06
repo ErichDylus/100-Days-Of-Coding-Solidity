@@ -60,4 +60,19 @@ contract ReceiverPays {
     function prefixed(bytes32 hash) internal pure returns (bytes32) {
         return keccak256(abi.encodePacked("\x19Ethereum Signed Message:\n32", hash));
     }
+    
+/*** javascript function for proper ReceiverPays signature:
+ * // recipient is the address that should be paid.
+// amount, in wei, specifies how much ether should be sent.
+// nonce can be any unique number to prevent replay attacks
+// contractAddress is used to prevent cross-contract replay attacks
+function signPayment(recipient, amount, nonce, contractAddress, callback) {
+    var hash = "0x" + abi.soliditySHA3(
+        ["address", "uint256", "uint256", "address"],
+        [recipient, amount, nonce, contractAddress]
+    ).toString("hex");
+
+    web3.eth.personal.sign(hash, web3.eth.defaultAccount, callback);
+} 
+**/
 }
