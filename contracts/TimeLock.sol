@@ -1,7 +1,5 @@
 pragma solidity ^0.6.0;
 
-//TEST BLOCK.TIMESTAMP ERRORS
-
 //FOR DEMONSTRATION ONLY, not recommended to be used for any purpose
 //@dev create a simple time-lock smart escrow contract for testing purposes denominated in seconds
 
@@ -33,6 +31,8 @@ contract TimeLock {
   mapping(address => bool) public parties;
   mapping(address => bool) registeredAddresses;
   
+  event DealExpired();
+  
   //restricts to agent (creator of escrow contract) or internal calls
   modifier restricted() {
     require(registeredAddresses[msg.sender] == true, "This may only be called by the Agent or the escrow contract itself");
@@ -50,7 +50,7 @@ contract TimeLock {
       parties[agent] = true;
       registeredAddresses[agent] = true;
       registeredAddresses[escrowAddress] = true;
-      effectiveTime = block.timestamp;
+      effectiveTime = uint256(block.timestamp);
       expirationTime = effectiveTime + _secsUntilExpiration;
       isExpired = false;
       sendEscrow(description, deposit, recipient);
@@ -76,9 +76,10 @@ contract TimeLock {
   
   //check if expired, and if so, remit balance to recipient
   function checkIfExpired() public returns(bool){
-        if (expirationTime <= block.timestamp) {
+        if (expirationTime <= uint256(block.timestamp)) {
             isExpired = true;
             selfdestruct(recipient);
+            emit DealExpired();
         } else {
             isExpired = false;
         }
