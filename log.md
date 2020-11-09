@@ -1,5 +1,8 @@
 # 100 Days of Code - Solidity - Log
 
+## Day 99, November 9, Monday
+**Today's Progress**: revising simple escrow and related tests, block.timestamp specifics, other signature param experimenting
+
 ## Day 98, November 5, Thursday
 **Today's Progress**: timelock and selfdestruct edits, further reading on signature concatenation and bytes
 
