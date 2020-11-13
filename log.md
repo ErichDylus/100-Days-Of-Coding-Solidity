@@ -1,5 +1,8 @@
 # 100 Days of Code - Solidity - Log
 
+## Day 100, November 13, Friday
+**Today's Progress**: experiments with transfer() v selfdestruct(); further signature testing and code cleanups
+
 ## Day 99, November 9, Monday
 **Today's Progress**: revising simple escrow and related tests, block.timestamp specifics, other signature param experimenting
 
