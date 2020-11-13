@@ -78,7 +78,7 @@ contract TimeLock {
   function checkIfExpired() public returns(bool){
         if (expirationTime <= uint256(block.timestamp)) {
             isExpired = true;
-            selfdestruct(recipient);
+            recipient.transfer(escrowAddress.balance);
             emit DealExpired();
         } else {
             isExpired = false;
