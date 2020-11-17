@@ -1,5 +1,4 @@
 // SPDX-License-Identifier: MIT
-
 pragma solidity 0.7.0;
 
 contract DayOne2019 {
@@ -22,19 +21,10 @@ contract DayOne2019 {
         }
     }
     
-   /*function calculateFuelMass() public {
-        for (uint256 x = 0; x < moduleMasses.length; x++) {
-            uint256 _fuelMass = massIndex[x];
-            _fuelMass = _fuelMass/3 - 2;
-            fuelIndex.push(_fuelMass);
-            fuelMassTotal = fuelMassTotal + _fuelMass;
-        }
-    }*/
-    
-    function recalculate() public {
+   function recalculate() public {
         for (uint256 x = 0; x < moduleMasses.length; x++) {
             uint256 _indexResult = massIndex[x];
-            while (_indexResult > 0) {_indexResult = _indexResult/3-2; fuelIndexTotal = fuelIndexTotal + _indexResult;}
+            do {_indexResult = _indexResult/3-2; fuelIndexTotal = fuelIndexTotal + _indexResult;} while (_indexResult/3-2 > 0);
         }
     }
     
