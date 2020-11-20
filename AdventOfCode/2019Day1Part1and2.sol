@@ -20,9 +20,8 @@ contract DayOne2019 {
     
    function calculateMassOfFuel() public {
         for (uint256 x = 0; x < moduleMasses.length; x++) {
-            for (uint256 _indexResult = massIndex[x]; _indexResult > 0;) {
-                _indexResult = _indexResult/3-2; 
-                fuelTotal += _indexResult;
+            for (uint256 _indexResult = massIndex[x]/3-2; _indexResult > 0; fuelTotal += _indexResult) {
+                _indexResult = _indexResult/3-2;
                 }
         }
     }
