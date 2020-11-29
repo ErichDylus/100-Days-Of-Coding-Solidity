@@ -13,15 +13,23 @@ contract DayFour2019 {
   
   constructor() {}
   
-  function numbers(uint256 _numCheck) private {
+  //test each digit of six-number array
+  function digits(uint256 _numCheck) private {
     require(digitOptions[0] >= 1 && digitOptions[0] <= 6);
     require(digitOptions[0] == digitOptions[1] | digitOptions[1] == digitOptions[2] | digitOptions[2] == digitOptions[3] | digitOptions[3] == digitOptions[4] | digitOptions[4] == digitOptions[5]);
     pass[_numCheck] = true;
   }
   
-  function startTest() public {
+  //concatenate six-digit number
+  function createNum() public {
       for(uint256 x = 0; x < 9; x++) {
-       numbers(x);   
+       digits(x);   
       }
+  }
+  
+  //test each full six-digit number
+  function test(uint256 num) public {
+      require(pwordOptions[] > MIN);
+      require(pwordOptions[] < MAX);
   }
 }
