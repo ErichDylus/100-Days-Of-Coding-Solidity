@@ -11,16 +11,17 @@ contract DayFour2019 {
   uint256 constant MAX = 647015;
   mapping (uint256 => bool) pass;
   
-  constructor() public {]
+  constructor() {}
   
   function numbers(uint256 _numCheck) private {
     require(digitOptions[0] >= 1 && digitOptions[0] <= 6);
-    require(digitOptions[0] == digitOptions[1] | digitOptions[1] == digitOptions[2] | digitOptions[2] == digitOptions[3]c| digitOptions[3] == digitOptions[4] | digitOptions[4] == digitOptions[5]);
+    require(digitOptions[0] == digitOptions[1] | digitOptions[1] == digitOptions[2] | digitOptions[2] == digitOptions[3] | digitOptions[3] == digitOptions[4] | digitOptions[4] == digitOptions[5]);
     pass[_numCheck] = true;
   }
   
-  function startTest() public (
+  function startTest() public {
       for(uint256 x = 0; x < 9; x++) {
-       //cycle numcheck for each of six digits   
+       numbers(x);   
       }
-      )
+  }
+}
