@@ -2,12 +2,12 @@
 
 pragma solidity 0.7.0;
 
-import "https://adventofcode.com/2020/day/1/input";
-
 contract DayOne2020 {
     
-    uint256 fuelTotal;
-    uint256[] entries = [1036, 1897, 1256, 1080, 1909, 1817, 1759, 1883, 1088, 1841, 1780, 1907, 1874, 1831, 1932, 1999, 1989, 1840, 1973, 1102, 1906, 1277, 1089, 1275, 1228, 1917, 1075, 1060, 1964, 1942, 2001, 1950, 1181, 1121, 1854, 1083, 1772, 1481, 1976, 1805, 1594, 1889, 1726, 1866, 798, 1739, 1709, 1946, 1948, 1808, 1836, 1849, 1465, 1066, 1943, 664, 1894, 1993, 1061, 1225, 1589, 1916, 1885, 1998, 1470, 1668, 1666, 1499, 1437, 1986, 1127, 1875, 1132, 1888, 1877, 1046, 1982, 1265, 1757, 1848, 1786, 1638, 1958, 1015, 1013, 1552, 1742
+    uint256 total;
+    uint256 entryOne;
+    uint256 entryTwo;
+    uint256[] entries = [1036, 1897, 1256, 1080, 1909, 1817, 1759, 1883, 1088, 1841, 1780, 1907, 1874, 1831, 1932, 1999, 1989, 1840, 1973, 1102, 1906, 1277, 1089, 1275, 1228, 1917, 1075, 1060, 1964, 1942, 2001, 1950, 1181, 1121, 1854, 1083, 1772, 1481, 1976, 1805, 1594, 1889, 1726, 1866, 798, 1739, 1709, 1946, 1948, 1808, 1836, 1849, 1465, 1066, 1943, 664, 1894, 1993, 1061, 1225, 1589, 1916, 1885, 1998, 1470, 1668, 1666, 1499, 1437, 1986, 1127, 1875, 1132, 1888, 1877, 1046, 1982, 1265, 1757, 1848, 1786, 1638, 1958, 1015, 1013, 1552, 1742,
 1850,
 1016,
 1839,
@@ -121,15 +121,16 @@ contract DayOne2020 {
 1150,
 1789,
 1870];
-    mapping(uint256 => uint256) public massIndex;
+    mapping(uint256 => uint256) public numIndex;
     
     constructor() {}
     
-    function calculateMass() public {
-        for (uint256 i = 0; i < moduleMasses.length; i++) {
-            uint256 _mass = moduleMasses[i]/3 - 2;
-            fuelTotal += _mass;
-            massIndex[i] = _mass;
+    function check2020() public {
+        for (uint256 i = 0; i < entries.length; i++) {
+            uint256 _entry = entries[i];
+            uint256 _entry2 = entries[x];
+            entryOne = _entry;
+            entryTwo = _entry2;
         }
     }
     
@@ -141,7 +142,7 @@ contract DayOne2020 {
         }
     }
     
-    function checkFuelTotal() public view returns(uint256) {
-        return(fuelTotal);
+    function checkTotal() public view returns(uint256) {
+        return(entryOne*entryTwo);
     }
 }
