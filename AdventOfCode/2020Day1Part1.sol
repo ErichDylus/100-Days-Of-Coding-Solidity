@@ -128,21 +128,15 @@ contract DayOne2020 {
     function check2020() public {
         for (uint256 i = 0; i < entries.length; i++) {
             uint256 _entry = entries[i];
-            uint256 _entry2 = entries[x];
-            entryOne = _entry;
-            entryTwo = _entry2;
-        }
-    }
-    
-   function calculateMassOfFuel() public {
-        for (uint256 x = 0; x < moduleMasses.length; x++) {
-            for (uint256 _indexResult = massIndex[x]/3-2; _indexResult > 0; fuelTotal += _indexResult) {
-                _indexResult = _indexResult/3-2;
+                for (uint256 x = 0; x < entries.length; x++) {
+                uint256 _entry2 = entries[x];
+                if (_entry + _entry2 == 2020) {entryOne = _entry;
+                entryTwo = _entry2; }
                 }
         }
     }
     
-    function checkTotal() public view returns(uint256) {
+   function checkTotal() public view returns(uint256) {
         return(entryOne*entryTwo);
     }
 }
