@@ -121,8 +121,7 @@ contract DayOne2020 {
 1150,
 1789,
 1870];
-    mapping(uint256 => uint256) public numIndex;
-    
+        
     constructor() {}
     
     function check2020() public {
