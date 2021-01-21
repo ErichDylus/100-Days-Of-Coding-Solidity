@@ -1,16 +1,11 @@
-pragma solidity ^0.6.0;
+pragma solidity ^0.8.0;
 
 //FOR DEMONSTRATION ONLY, not recommended to be used for any purpose
 //@dev create a simple time-lock smart escrow contract for testing purposes denominated in seconds
 
-import "https://github.com/OpenZeppelin/openzeppelin-contracts/blob/master/contracts/math/SafeMath.sol";
-
 
 contract TimeLock {
     
-  using SafeMath for uint256;
-  using SafeMath for uint32;
-  
   //escrow struct to contain basic description of underlying deal, purchase price, ultimate recipient of funds
   struct InEscrow {
       string description;
@@ -41,7 +36,7 @@ contract TimeLock {
   
   //creator of escrow contract is agent and contributes deposit-- could be third party agent/title co. or simply the buyer
   //initiate escrow with description, deposit, assign creator as agent, and designate recipient
-  constructor(string memory _description, uint256 _deposit, address payable _creator, address payable _recipient, uint256 _secsUntilExpiration) public payable {
+  constructor(string memory _description, uint256 _deposit, address payable _creator, address payable _recipient, uint256 _secsUntilExpiration) payable {
       require(msg.value >= deposit, "Submit deposit amount");
       agent = _creator;
       deposit = _deposit;
