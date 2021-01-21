@@ -30,7 +30,7 @@ contract TimeLock {
   
   //restricts to agent (creator of escrow contract) or internal calls
   modifier restricted() {
-    require(registeredAddresses[msg.sender] == true, "This may only be called by the Agent or the escrow contract itself");
+    require(registeredAddresses[msg.sender], "This may only be called by the Agent or the escrow contract itself");
     _;
   }
   
