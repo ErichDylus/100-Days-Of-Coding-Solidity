@@ -70,7 +70,6 @@ contract storageContract {
     Table[keyToMove].idListPointer = recordToDelete;
     // remove the last element from the id list that holds the old pointer for the keep record
     IdList.length--;
-    // emit event
     emit Deleted(msg.sender, recordId);
     return true;
   }
