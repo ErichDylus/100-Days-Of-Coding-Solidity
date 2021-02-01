@@ -1,6 +1,6 @@
 pragma solidity ^0.5.3;
 pragma experimental ABIEncoderV2;
-
+//todo: restrict Insert/Update/Delete to onlyLexDAO or similar
 contract storageContract {
 
   event Inserted(address _sender, address _recordId);
