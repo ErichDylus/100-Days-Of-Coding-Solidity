@@ -1,6 +1,6 @@
 pragma solidity ^0.8.0;
 
-//FOR DEMONSTRATION ONLY, not recommended to be used for any purpose
+//FOR DEMONSTRATION ONLY, not recommended to be used on mainnet
 //@dev create a simple time-lock smart escrow contract for testing purposes denominated in seconds
 
 
