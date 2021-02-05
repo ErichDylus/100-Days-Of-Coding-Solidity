@@ -2,14 +2,14 @@
 //adapted from Kleros form:: https://github.com/kleros/erc-792/blob/master/contracts/examples/SimpleEscrowWithERC1497.sol
 //todo: make LexDAO arbitrator
 
-pragma solidity >=0.7;
+pragma solidity >=0.8;
 
 import "https://github.com/kleros/erc-792/blob/master/contracts/IArbitrable.sol";
 import "https://github.com/kleros/erc-792/blob/master/contracts/IArbitrator.sol";
 import "https://github.com/kleros/erc-792/blob/master/contracts/erc-1497/IEvidence.sol";
 
 contract SimpleEscrowWithERC1497 is IArbitrable, IEvidence {
-    address payable public payer = msg.sender;
+    address payable public payer = payable(msg.sender);
     address payable public payee;
     uint256 public value;
     IArbitrator public arbitrator;
