@@ -2,7 +2,7 @@
 //adapted from Kleros form:: https://github.com/kleros/erc-792/blob/master/contracts/examples/SimpleEscrowWithERC1497.sol
 //todo: make LexDAO arbitrator
 
-pragma solidity >=0.8;
+pragma solidity >=0.7;
 
 import "https://github.com/kleros/erc-792/blob/master/contracts/IArbitrable.sol";
 import "https://github.com/kleros/erc-792/blob/master/contracts/IArbitrator.sol";
@@ -33,6 +33,7 @@ contract SimpleEscrowWithERC1497 is IArbitrable, IEvidence {
         IArbitrator _arbitrator,
         string memory _metaevidence
     ) payable {
+        require(msg.value > 0, "Submit escrowed amount");
         value = msg.value;
         payee = _payee;
         arbitrator = _arbitrator;
@@ -48,7 +49,7 @@ contract SimpleEscrowWithERC1497 is IArbitrable, IEvidence {
             require(block.timestamp - createdAt > reclamationPeriod, "Payer still has time to reclaim.");
 
         status = Status.Resolved;
-        payee.send(value);
+        payee.transfer(value);
     }
 
     function reclaimFunds() public payable {
@@ -63,7 +64,7 @@ contract SimpleEscrowWithERC1497 is IArbitrable, IEvidence {
                 block.timestamp - reclaimedAt > arbitrationFeeDepositPeriod,
                 "Payee still has time to deposit arbitration fee."
             );
-            payer.send(address(this).balance);
+            payer.transfer(address(this).balance);
             status = Status.Resolved;
         } else {
             require(block.timestamp - createdAt <= reclamationPeriod, "Reclamation period ended.");
@@ -89,8 +90,8 @@ contract SimpleEscrowWithERC1497 is IArbitrable, IEvidence {
         require(_ruling <= numberOfRulingOptions, "Ruling out of bounds!");
 
         status = Status.Resolved;
-        if (_ruling == uint256(RulingOptions.PayerWins)) payer.send(address(this).balance);
-        else payee.send(address(this).balance);
+        if (_ruling == uint256(RulingOptions.PayerWins)) payer.transfer(address(this).balance);
+        else payee.transfer(address(this).balance);
         emit Ruling(arbitrator, _disputeID, _ruling);
     }
 
