@@ -1,5 +1,6 @@
 //SPDX-License-Identifier: MIT
 //adapted from Kleros form:: https://github.com/kleros/erc-792/blob/master/contracts/examples/SimpleEscrowWithERC1497.sol
+//for testnet/testing purposes only, not audited nor suitable for any other use
 
 pragma solidity >=0.8;
 
