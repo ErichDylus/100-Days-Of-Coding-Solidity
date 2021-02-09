@@ -1,6 +1,5 @@
 //SPDX-License-Identifier: MIT
 //adapted from Kleros form:: https://github.com/kleros/erc-792/blob/master/contracts/examples/SimpleEscrowWithERC1497.sol
-//todo: make LexDAO arbitrator
 
 pragma solidity >=0.8;
 
@@ -15,7 +14,6 @@ contract SimpleEscrowWithERC1497 is IArbitrable, IEvidence {
     IArbitrator public arbitrator;
     uint256 public constant reclamationPeriod = 3 minutes;
     uint256 public constant arbitrationFeeDepositPeriod = 3 minutes;
-
     uint256 public createdAt;
     uint256 public reclaimedAt;
 
@@ -24,15 +22,11 @@ contract SimpleEscrowWithERC1497 is IArbitrable, IEvidence {
 
     enum RulingOptions {RefusedToArbitrate, PayerWins, PayeeWins}
     uint256 constant numberOfRulingOptions = 2;
-
     uint256 constant metaevidenceID = 0;
     uint256 constant evidenceGroupID = 0;
 
-    constructor(
-        address payable _payee,
-        IArbitrator _arbitrator,
-        string memory _metaevidence
-    ) payable {
+    //user may elect to enter LexDAO address as _arbitrator
+    constructor(address payable _payee, IArbitrator _arbitrator, string memory _metaevidence) payable {
         require(msg.value > 0, "Submit escrowed amount");
         value = msg.value;
         payee = _payee;
@@ -44,21 +38,15 @@ contract SimpleEscrowWithERC1497 is IArbitrable, IEvidence {
 
     function releaseFunds() public {
         require(status == Status.Initial, "Transaction is not in Initial state.");
-
         if (msg.sender != payer)
             require(block.timestamp - createdAt > reclamationPeriod, "Payer still has time to reclaim.");
-
         status = Status.Resolved;
         payee.transfer(value);
     }
 
     function reclaimFunds() public payable {
-        require(
-            status == Status.Initial || status == Status.Reclaimed,
-            "Transaction is not in Initial or Reclaimed state."
-        );
+        require(status == Status.Initial || status == Status.Reclaimed, "Transaction is not in Initial or Reclaimed state.");
         require(msg.sender == payer, "Only the payer can reclaim the funds.");
-
         if (status == Status.Reclaimed) {
             require(
                 block.timestamp - reclaimedAt > arbitrationFeeDepositPeriod,
@@ -86,10 +74,10 @@ contract SimpleEscrowWithERC1497 is IArbitrable, IEvidence {
 
     function rule(uint256 _disputeID, uint256 _ruling) public override {
         require(msg.sender == address(arbitrator), "Only the arbitrator can execute this.");
-        require(status == Status.Disputed, "There should be dispute to execute a ruling.");
+        require(status == Status.Disputed, "There should be a dispute to execute a ruling.");
         require(_ruling <= numberOfRulingOptions, "Ruling out of bounds!");
-
         status = Status.Resolved;
+        //if payer wins, receives balance, otherwise payee receives balance
         if (_ruling == uint256(RulingOptions.PayerWins)) payer.transfer(address(this).balance);
         else payee.transfer(address(this).balance);
         emit Ruling(arbitrator, _disputeID, _ruling);
