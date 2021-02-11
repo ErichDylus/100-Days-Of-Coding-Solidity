@@ -6,6 +6,7 @@ contract RugPull {
     
   address rugAddress = address(this);
   address payable admin;
+  uint deposit = 1;
   bool isRugged;
   
   event Rugged();
@@ -17,7 +18,7 @@ contract RugPull {
   
   constructor(address payable _admin) payable {
       require(msg.value >= deposit, "Submit deposit amount");
-      admin = _creator;
+      admin = _admin;
       isRugged = false;
   }
   
