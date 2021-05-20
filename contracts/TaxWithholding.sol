@@ -5,6 +5,7 @@ pragma solidity ^0.8.0;
 /** FOR DEMONSTRATION ONLY, not recommended to be used for any purpose and provided with no warranty whatsoever
  *  @dev split lump sum income and send portion to tax withholding wallet and remainder to 'checking account wallet'
  *  provides rough estimate, division intricacies in process, to be adapted for multiple payees
+ * TODO: correct paystubNumber issue
  */
  
 interface IERC20 {
@@ -35,42 +36,25 @@ interface IERC20 {
 
 contract TaxWithholding {
     
-    address payable owner;
-    address payable taxes;
-    address payable checking;
-    uint256 income;
-    uint16 paystubNumber; 
+    mapping(address => uint256) payeeNumber;
+    mapping(uint256 => mapping(address => uint256)) paystubNumber;
     
-    modifier onlyOwner() { //restricts to agent (creator of escrow contract) or internal calls
-    require(msg.sender == owner, "This may only be called by owner");
-    _;
-    }
     
-    //owner designates wallets for taxes and 'checking' accounts
-    constructor(address payable _taxes, address payable _checking) payable {
-      require(_taxes != address(0) && _checking != address(0), "Submit valid tax and checking wallet addresses");
-      owner = payable(address(msg.sender));
-      taxes = _taxes;
-      checking = _checking;
-      
-    }
+    constructor() payable {}
     
-    function setAccounts(address payable _taxes, address payable _checking) public payable onlyOwner {
-      require(_taxes != address(0) && _checking != address(0), "Submit valid tax and checking wallet addresses");
-      taxes = _taxes;
-      checking = _checking;
-    }
-    
-    function withholdTax(uint256 _income, uint8 _taxRate, IERC20 tokenAddress) private returns(uint256, uint256, uint16) {
+    //payee submits income, tax rate, token address, tax and checking wallet addresses, and chosen ID number
+    function withholdTax(uint256 _income, uint8 _taxRate, IERC20 tokenAddress, address payable _taxes, address payable _checking, uint256 _IDnumber) external returns(uint256, uint256) {
+        require(_taxes != address(0) && _checking != address(0), "Submit valid tax and checking wallet addresses");
         require(_taxRate > 0 && _taxRate < 100, "Submit tax rate percentage as whole number, for example 25");
         tokenAddress.transfer(address(this), _income); // send gross income to this contract
         uint256 _taxedAmt = (uint256(_income/uint256(_taxRate)));
         uint256 _afterTaxAmt = _income - _taxedAmt;
-		tokenAddress.transferFrom(address(this), taxes, _taxedAmt);
-		tokenAddress.transferFrom(address(this), checking, _afterTaxAmt);
-		uint256 _taxBalance = IERC20(tokenAddress).balanceOf(taxes); 
-		uint256 _checkingBalance = IERC20(tokenAddress).balanceOf(checking);
-		paystubNumber++; 
-        return(_taxBalance, _checkingBalance, paystubNumber);
+		tokenAddress.transferFrom(address(this), _taxes, _taxedAmt);
+		tokenAddress.transferFrom(address(this), _checking, _afterTaxAmt);
+		uint256 _taxBalance = IERC20(tokenAddress).balanceOf(_taxes); 
+		uint256 _checkingBalance = IERC20(tokenAddress).balanceOf(_checking);
+		payeeNumber[msg.sender] = _IDnumber;
+		paystubNumber[_IDnumber][payeeNumber]++; 
+        return(_taxBalance, _checkingBalance);
     }
 }
