@@ -34,8 +34,13 @@ interface IERC20 {
     event Approval(address indexed owner, address indexed spender, uint256 value);
 }
 
+interface customDripToken {
+    function customDripTKN(uint256[] memory drip, address dripTokenAddress) external;
+}
+
 contract TaxWithholding {
-    
+    address payable[] payees;
+    address payable immutable dripDropFactory = payable(0x7d5943dFb6fF3303728629Cf066B6D7cFb22733B);
     mapping(address => uint256) payeeNumber;
     mapping(uint256 => mapping(address => uint256)) paystubNumber;
     
@@ -43,18 +48,22 @@ contract TaxWithholding {
     constructor() payable {}
     
     //payee submits income, tax rate, token address, tax and checking wallet addresses, and chosen ID number
-    function withholdTax(uint256 _income, uint8 _taxRate, IERC20 tokenAddress, address payable _taxes, address payable _checking, uint256 _IDnumber) external returns(uint256, uint256) {
-        require(_taxes != address(0) && _checking != address(0), "Submit valid tax and checking wallet addresses");
+    function withholdTax(uint256 _income, uint8 _taxRate, IERC20 tokenAddress, address payable _taxWallet, address payable _checkingWallet, uint256 _IDnumber) external returns(uint256, uint256) {
+        require(_taxWallet != address(0) && _checkingWallet != address(0), "Submit valid tax and checking wallet addresses");
         require(_taxRate > 0 && _taxRate < 100, "Submit tax rate percentage as whole number, for example 25");
         tokenAddress.transfer(address(this), _income); // send gross income to this contract
-        uint256 _taxedAmt = (uint256(_income/uint256(_taxRate)));
-        uint256 _afterTaxAmt = _income - _taxedAmt;
-		tokenAddress.transferFrom(address(this), _taxes, _taxedAmt);
-		tokenAddress.transferFrom(address(this), _checking, _afterTaxAmt);
-		uint256 _taxBalance = IERC20(tokenAddress).balanceOf(_taxes); 
-		uint256 _checkingBalance = IERC20(tokenAddress).balanceOf(_checking);
+        uint256 _taxes = (uint256(_income/uint256(_taxRate)));
+        uint256 _afterTaxAmount = _income - _taxes;
+		tokenAddress.transferFrom(address(this), _taxWallet, _taxes);
+		tokenAddress.transferFrom(address(this), _checkingWallet, _afterTaxAmount);
+		uint256 _taxBalance = IERC20(tokenAddress).balanceOf(_taxWallet); 
+		uint256 _checkingBalance = IERC20(tokenAddress).balanceOf(_checkingWallet);
 		payeeNumber[msg.sender] = _IDnumber;
-		paystubNumber[_IDnumber][payeeNumber]++; 
+		//paystubNumber[_IDnumber][payeeNumber]++; 
+		/* TODO: arrays of addresses and withheld amounts
+		customDripToken(dripDropFactory).customDripTKN(uint256[] memory _taxes, tokenAddress,)
+		customDripToken(dripDropFactory).customDripTKN(uint256[] memory _afterTaxAmount, tokenAddress,)
+		*/
         return(_taxBalance, _checkingBalance);
     }
 }
