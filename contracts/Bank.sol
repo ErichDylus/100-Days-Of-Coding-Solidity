@@ -29,6 +29,9 @@ contract Bank {
     address ERC20_ADDRESS;
 
     uint256 balance = 0;
+    uint256 amountToBank;
+    uint256 amountToUser;
+    
 
     // The bank should take a fee of 0.3% on every withdrawal. For example, if a
     // user is withdrawing 1000 DAI, the bank should receive 3 DAI. If a user is
@@ -62,7 +65,7 @@ contract Bank {
     function withdraw(uint256 amount) public returns (uint256) {
         require(msg.sender == user, "Only user may withdraw.");
         // Calculate the fee that is owed to the bank
-        (uint256 amountToUser, uint256 amountToBank) = calculateBankFee(amount);
+        (amountToUser, amountToBank) = calculateBankFee(amount);
 
         erc20.transfer(user, amountToUser);
         // Decrease the balance by the amount sent to the user
@@ -78,16 +81,15 @@ contract Bank {
     /// @notice Calculate the fee that should go to the bank
     /// @param amount The amount that a fee should be deducted from
     /// @return A tuple of (amountToUser, amountToBank)
-    function calculateBankFee(uint256 amount) public view returns (uint256, uint256)
+    function calculateBankFee(uint256 amount) public returns (uint256, uint256)
     {
-        // TODO: Implement the 0.3% fee to the bank here
-        uint256 amountToBank = amount * bankFee;
-        uint256 amountToUser = amount - amountToBank;
+        amountToBank = amount * 1/(100/bankFee);
+        amountToUser = amount - amountToBank;
         return (amountToUser, amountToBank);
     }
 
     /// @notice Set the fee that the bank takes
-    /// @param fee The fee that bankFee should be set to
+    /// @param fee The fee that bankFee should be set to, percentage as a whole number (for example 25% = 25)
     /// @return bankFee The new value of the bank fee
     function setBankFee(uint256 fee) public returns (uint256) {
         bankFee = fee;
