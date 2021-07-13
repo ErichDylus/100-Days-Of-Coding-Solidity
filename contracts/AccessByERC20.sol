@@ -16,6 +16,7 @@ contract AccessByERC20 {
     address owner;
     string IPFSlink;
     ERC20 public erc20;
+    mapping(address => uint256) tokenBalance;
     
     event LinkViewed(address indexed viewer);
     
@@ -31,7 +32,15 @@ contract AccessByERC20 {
         return(IPFSlink);
     }
     
+    //check msg.sender ERC20 balance and assign mapping in order to accessLink()
+    function setBalance() external {
+        uint256 _balance = checkBalance(msg.sender);
+        _balance = tokenBalance[msg.sender];
+    }
     
+    function checkBalance(address _caller) internal returns(uint256) {
+        return(erc20.balanceOf(msg.sender));
+    }
     
     function accessLink() external view returns(string memory) {
         if (erc20.balanceOf[msg.sender] > 0) {
