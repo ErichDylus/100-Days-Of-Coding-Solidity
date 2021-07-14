@@ -21,29 +21,29 @@ contract AccessByERC20 {
     
     //event LinkViewed(address indexed viewer);
     
-    constructor(address _token, string memory _IPFSlink) public { 
-        _token = token;
-        _IPFSlink = IPFSlink;
+    constructor(address _token, string memory _IPFSlink) { 
+        token = _token;
+        IPFSlink = _IPFSlink;
         erc20 = ERC20(token);
         owner = msg.sender;
     }
     
-    function setIPFSLink(string calldata _IPFSlink) external {
+    function setIPFSLink(string memory _IPFSlink) external {
         require(msg.sender == owner, "Not authorized to change IPFS link.");
-        _IPFSlink = IPFSlink;
+        IPFSlink = _IPFSlink;
     }
     
     //check msg.sender ERC20 balance and assign mapping in order to accessLink()
     function setBalance() external {
         uint256 _balance = checkBalance(msg.sender);
-        _balance = tokenBalance[msg.sender];
+        tokenBalance[msg.sender] = _balance;
     }
     
     function checkBalance(address _caller) internal view returns(uint256) {
         return(erc20.balanceOf(_caller));
     }
     
-    function accessLink() external returns(string memory) {
+    function accessLink() external view returns(string memory) {
         if (tokenBalance[msg.sender] > 0) {
             return(IPFSlink);
             //emit LinkViewed(msg.sender);
