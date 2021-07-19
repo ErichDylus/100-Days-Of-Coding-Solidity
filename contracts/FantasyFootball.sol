@@ -4,7 +4,7 @@ pragma solidity 0.7.5;
 
 /*unaudited and not for mainnet use of any kind, provided without any warranty whatsoever
 **IN PROCESS; NEED TO CODE WINNERS' PAYOUTS
-**@dev create a simple smart escrow contract for a fantasy football league, with contributions and payout in ETH
+**@dev create a simple smart ETH escrow contract for a fantasy football league, with contributions and payout in ETH
 **intended to be deployed by commissioner, who is an identified party, after draft is concluded
 **single league, single year*/
 
@@ -16,6 +16,7 @@ contract FantasyFootball {
       uint256 deposit;
   }
 
+  address[] public teams; 
   address escrowAddress = address(this);
   address payable firstPlace;
   address payable secondPlace;
@@ -27,7 +28,7 @@ contract FantasyFootball {
   bool isOver;
   string description;
   mapping(address => bool) public teamWhitelist; //for commissioner to whitelist addresses that may enter league
-  mapping(address => bool) public teams; //map whether an address is a team in the league
+  mapping(address => bool) public isTeam; //map whether an address is a team in the league
   mapping(address => uint256) public points; //map total points per team for standings
   
   event PayFirstPlace();
@@ -46,7 +47,7 @@ contract FantasyFootball {
       commissioner = payable(address(msg.sender));
       deposit = _deposit;
       description = _description;
-      teams[commissioner] = true;
+      isTeam[commissioner] = true;
       effectiveTime = uint256(block.timestamp);
       expirationTime = effectiveTime + _secsUntilSeasonOver;
       LeagueDetails(description, deposit);
@@ -61,14 +62,16 @@ contract FantasyFootball {
   
   //team pays deposit and enters league if previously whitelisted by commissioner and not already a team
   function enterLeague(address payable _teamAddress) public payable {
-      require(!teams[_teamAddress], "Address is already a team");
+      require(!isTeam[_teamAddress], "Address is already a team");
       require(teamWhitelist[_teamAddress], "Address has not been whitelisted by commissioner");
       require(!isOver, "Season over, too late");
       require(msg.value >= deposit, "Submit deposit amount");
-      teams[_teamAddress] = true;
+      isTeam[_teamAddress] = true;
+      teams.push(_teamAddress);
   }
   
   //TODO: weekly increment of points by commissioner, publicly verifiable
+  //leaderboard function checking points of each team in array
     
   // check if expired and payout winners if so
   function endSeason() public restricted returns(bool) {
