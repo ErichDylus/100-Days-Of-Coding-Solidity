@@ -4,7 +4,7 @@ pragma solidity 0.7.5;
 
 /*unaudited and not for mainnet use of any kind, provided without any warranty whatsoever
 **IN PROCESS; NEED TO CODE WINNERS' PAYOUTS
-**@dev create a simple smart ETH escrow contract for a fantasy football league, with contributions and payout in ETH
+**@dev create a simple smart ETH escrow contract for a fantasy football league, 17 week season, with contributions and payout in ETH
 **intended to be deployed by commissioner, who is an identified party, after draft is concluded
 **single league, single year*/
 
@@ -22,9 +22,8 @@ contract FantasyFootball {
   address payable secondPlace;
   address payable thirdPlace;
   address payable commissioner;
+  uint8 week;
   uint256 deposit;
-  uint256 effectiveTime;
-  uint256 expirationTime;
   bool isOver;
   string description;
   mapping(address => bool) public teamWhitelist; //for commissioner to whitelist addresses that may enter league
@@ -36,25 +35,23 @@ contract FantasyFootball {
   event PayThirdPlace();
   event SeasonOver(bool isOver);
   
-  modifier restricted() { 
+  modifier onlyCommissioner() { 
     require(msg.sender == commissioner, "This may only be called by the league's commissioner");
     _;
   }
   
   //commissioner deploys contract with description, its deposit amount, and seconds until season expiry
-  constructor(string memory _description, uint256 _deposit, uint256 _secsUntilSeasonOver) payable {
+  constructor(string memory _description, uint256 _deposit) payable {
       require(msg.value >= deposit, "Submit deposit amount");
       commissioner = payable(address(msg.sender));
       deposit = _deposit;
       description = _description;
       isTeam[commissioner] = true;
-      effectiveTime = uint256(block.timestamp);
-      expirationTime = effectiveTime + _secsUntilSeasonOver;
       LeagueDetails(description, deposit);
   }
   
   //commissioner whitelists addresses who may enter league as a team (who participated in the draft)
-  function whitelistTeam(address payable _team) public restricted {
+  function whitelistTeam(address payable _team) public onlyCommissioner {
       require(!teamWhitelist[_team], "Party already a team");
       require(!isOver, "Season over, too late");
       teamWhitelist[_team] = true;
@@ -70,13 +67,19 @@ contract FantasyFootball {
       teams.push(_teamAddress);
   }
   
-  //TODO: weekly increment of points by commissioner, publicly verifiable
+  //TODO: weekly increment of points and season week by commissioner, publicly verifiable
   //leaderboard function checking points of each team in array
+  
+  function weeklyPoints() public onlyCommissioner {
+      require(week < 17, "Season over.");
+      week++;
+  }
     
   // check if expired and payout winners if so
-  function endSeason() public restricted returns(bool) {
-      require(expirationTime <= uint256(block.timestamp), "Season still in process.");
+  function endSeason() public onlyCommissioner returns(bool) {
+      require(week > 16, "Season still in process.");
       isOver = true;
+      //iterate through teams[] to assign places
       //firstPlace.transfer(escrowAddress.balance);
       //emit PayFirstPlace();
       emit SeasonOver(isOver);
