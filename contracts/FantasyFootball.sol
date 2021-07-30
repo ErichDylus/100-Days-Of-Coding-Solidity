@@ -9,12 +9,6 @@ pragma solidity 0.7.5;
 **single league, single year*/
 
 contract FantasyFootball {
-    
-  //struct with league name/details and per-team deposit amount
-  struct LeagueDetails {
-      string description;
-      uint256 deposit;
-  }
 
   address[] public teams; 
   address escrowAddress = address(this);
@@ -30,6 +24,7 @@ contract FantasyFootball {
   mapping(address => bool) public isTeam; //map whether an address is a team in the league
   mapping(address => uint256) public points; //map total points per team for standings
   
+  event LeagueDetails(string description, uint256 deposit);
   event PayFirstPlace();
   event PaySecondPlace();
   event PayThirdPlace();
@@ -47,7 +42,7 @@ contract FantasyFootball {
       deposit = _deposit;
       description = _description;
       isTeam[commissioner] = true;
-      LeagueDetails(description, deposit);
+      emit LeagueDetails(description, deposit);
   }
   
   //commissioner whitelists addresses who may enter league as a team (who participated in the draft)
