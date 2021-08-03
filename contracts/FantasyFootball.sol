@@ -62,12 +62,21 @@ contract FantasyFootball {
       teams.push(_teamAddress);
   }
   
-  //TODO: weekly increment of points and season week by commissioner, publicly verifiable
-  //leaderboard function checking points of each team in array
+  //weekly increment of points by commissioner, publicly verifiable, one team at a time 
+  function weeklyPoints(address _teamAddress, uint256 _points) public onlyCommissioner {
+      require(week < 17, "Season over.");
+      points[_teamAddress] += _points;
+  }
   
-  function weeklyPoints() public onlyCommissioner {
+  function incrementWeek() public onlyCommissioner returns(uint256){
       require(week < 17, "Season over.");
       week++;
+      return(week);
+  }
+
+  //check point total of a team (TODO: iterate through mapping and return full leaderboard)
+  function checkPointTotal(address _teamAddress) public view returns(uint256) {
+      return(points[_teamAddress]);
   }
     
   // check if expired and payout winners if so
