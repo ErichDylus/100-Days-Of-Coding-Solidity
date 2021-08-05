@@ -3,7 +3,7 @@
 pragma solidity 0.7.5;
 
 /*unaudited and not for mainnet use of any kind, provided without any warranty whatsoever
-**IN PROCESS; NEED TO CODE WINNERS' PAYOUTS
+**IN PROCESS, NOT OPERATIONAL
 **@dev create a simple smart ETH escrow contract for a fantasy football league, 17 week season, with contributions and payout in ETH
 **intended to be deployed by commissioner, who is an identified party, after draft is concluded
 **single league, single year*/
