@@ -4,6 +4,7 @@ pragma solidity 0.7.5;
 
 /*unaudited and not for mainnet use of any kind, provided without any warranty whatsoever
 **IN PROCESS, NOT OPERATIONAL
+**Needs NON REENTRANT
 **@dev create a simple smart ETH escrow contract for a fantasy football league, 17 week season, with contributions and payout in ETH
 **intended to be deployed by commissioner, who is an identified party, after draft is concluded
 **single league, single year*/
@@ -11,10 +12,6 @@ pragma solidity 0.7.5;
 contract FantasyFootball {
 
   address[] public teams; 
-  address escrowAddress = address(this);
-  address payable firstPlace;
-  address payable secondPlace;
-  address payable thirdPlace;
   address payable commissioner;
   uint8 week;
   uint256 deposit;
@@ -79,13 +76,17 @@ contract FantasyFootball {
       return(points[_teamAddress]);
   }
     
-  // check if expired and payout winners if so
-  function endSeason() public onlyCommissioner returns(bool) {
+  //commissioner calls checkPointTotal for each address and passes the top three to this function
+  function endSeason(address payable _firstPlace, address payable _secondPlace, address payable _thirdPlace) public onlyCommissioner returns(bool) {
       require(week > 16, "Season still in process.");
+      require(isTeam[_firstPlace] && isTeam[_secondPlace] && isTeam[_thirdPlace], "Re-enter addresses");
       isOver = true;
-      //iterate through teams[] to assign places
-      //firstPlace.transfer(escrowAddress.balance);
-      //emit PayFirstPlace();
+      _thirdPlace.transfer(deposit);
+      emit PayThirdPlace();
+      _secondPlace.transfer(deposit * 3);
+      emit PaySecondPlace();
+      _firstPlace.transfer(address(this).balance);
+      emit PayFirstPlace();
       emit SeasonOver(isOver);
       return(isOver);
   }
