@@ -50,13 +50,13 @@ contract FantasyFootball {
   }
   
   //team pays deposit and enters league if previously whitelisted by commissioner and not already a team
-  function enterLeague(address payable _teamAddress) public payable {
-      require(!isTeam[_teamAddress], "Address is already a team");
-      require(teamWhitelist[_teamAddress], "Address has not been whitelisted by commissioner");
+  function enterLeague() public payable {
+      require(!isTeam[msg.sender], "Address is already a team");
+      require(teamWhitelist[msg.sender], "Address has not been whitelisted by commissioner");
       require(!isOver, "Season over, too late");
       require(msg.value >= deposit, "Submit deposit amount");
-      isTeam[_teamAddress] = true;
-      teams.push(_teamAddress);
+      isTeam[msg.sender] = true;
+      teams.push(msg.sender);
   }
   
   //weekly increment of points by commissioner, publicly verifiable, one team at a time 
@@ -77,13 +77,14 @@ contract FantasyFootball {
   }
     
   //commissioner calls checkPointTotal for each address and passes the top three to this function
+  //third place receives their deposit back, second place gets double the deposit amount, first place gets everything else
   function endSeason(address payable _firstPlace, address payable _secondPlace, address payable _thirdPlace) public onlyCommissioner returns(bool) {
       require(week > 16, "Season still in process.");
       require(isTeam[_firstPlace] && isTeam[_secondPlace] && isTeam[_thirdPlace], "Re-enter addresses");
       isOver = true;
       _thirdPlace.transfer(deposit);
       emit PayThirdPlace();
-      _secondPlace.transfer(deposit * 3);
+      _secondPlace.transfer(deposit * 2);
       emit PaySecondPlace();
       _firstPlace.transfer(address(this).balance);
       emit PayFirstPlace();
