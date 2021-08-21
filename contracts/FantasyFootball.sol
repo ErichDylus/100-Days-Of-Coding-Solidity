@@ -20,8 +20,17 @@ contract FantasyFootball {
   mapping(address => bool) public teamWhitelist; //for commissioner to whitelist addresses that may enter league
   mapping(address => bool) public isTeam; //map whether an address is a team in the league
   mapping(address => uint256) public points; //map total points per team for standings
+  mapping(address => uint256) public teamWeek;
   
-  event LeagueDetails(string description, uint256 deposit);
+  struct TeamWeek {
+    address team;
+    uint256 week;
+    bool pointsEntered;
+    }
+
+  TeamWeek[] public teamweeks;
+  
+  event LeagueDetails(string description, uint256 deposit, address commissioner);
   event PayFirstPlace();
   event PaySecondPlace();
   event PayThirdPlace();
@@ -39,30 +48,34 @@ contract FantasyFootball {
       deposit = _deposit;
       description = _description;
       isTeam[commissioner] = true;
-      emit LeagueDetails(description, deposit);
+      emit LeagueDetails(description, deposit, commissioner);
   }
   
   //commissioner whitelists addresses who may enter league as a team (who participated in the draft)
-  function whitelistTeam(address payable _team) public onlyCommissioner {
+  function whitelistTeam(address payable _team) public onlyCommissioner returns(bool){
       require(!teamWhitelist[_team], "Party already a team");
       require(!isOver, "Season over, too late");
       teamWhitelist[_team] = true;
+      return(true);
   }
   
   //team pays deposit and enters league if previously whitelisted by commissioner and not already a team
-  function enterLeague() public payable {
+  function enterLeague() public payable returns(bool){
       require(!isTeam[msg.sender], "Address is already a team");
       require(teamWhitelist[msg.sender], "Address has not been whitelisted by commissioner");
       require(!isOver, "Season over, too late");
       require(msg.value >= deposit, "Submit deposit amount");
       isTeam[msg.sender] = true;
       teams.push(msg.sender);
+      return(true);
   }
   
   //weekly increment of points by commissioner, publicly verifiable, one team at a time 
   function weeklyPoints(address _teamAddress, uint256 _points) public onlyCommissioner {
       require(week < 17, "Season over.");
+      // TODO: Check this teamweeks hasn't been pushed yet // require(!TeamWeek(_teamAddress, week, ), "Points already entered for this team this week.");
       points[_teamAddress] += _points;
+      teamweeks.push(TeamWeek(_teamAddress, week, true));
   }
   
   function incrementWeek() public onlyCommissioner returns(uint256){
