@@ -3,7 +3,7 @@
 pragma solidity 0.7.5;
 
 /*unaudited and not for mainnet use of any kind, provided without any warranty whatsoever
-**IN PROCESS, NOT OPERATIONAL
+**IN PROCESS, INCOMPLETE
 **@dev create a simple smart ETH escrow contract for a fantasy football league, 17 week season, with contributions and payout in ETH
 **intended to be deployed by commissioner, who is an identified party, after draft is concluded
 **single league, single year*/
@@ -30,6 +30,7 @@ contract FantasyFootball {
   TeamWeek[] public teamweeks;
   
   event LeagueDetails(string description, uint256 deposit, address commissioner);
+  event PointsEntered(address indexed team, uint256 week, uint256 points);
   event PayFirstPlace(address firstPlace);
   event PaySecondPlace(address secondPlace);
   event PayThirdPlace(address thirdPlace);
@@ -77,10 +78,9 @@ contract FantasyFootball {
   // @param _points: _teamAddress's weekly point total to add to their tally
   function weeklyPoints(address _teamAddress, uint256 _points) public onlyCommissioner {
       require(week < 17, "Season over.");
-      require(!teamweeks.TeamWeek(_teamAddress, week,), "Points already entered for this team this week.");
-      // TODO: Check this teamweeks hasn't been pushed yet // require(!TeamWeek(_teamAddress, week, ), "Points already entered for this team this week.");
       points[_teamAddress] += _points;
-      teamweeks.push(TeamWeek(_teamAddress, week, true));
+      teamweeks.push(TeamWeek(_teamAddress, week, true)); //TODO: Check this teamweeks hasn't been pushed yet without an array of structs lookup
+      emit PointsEntered(_teamAddress, week, _points);
   }
   
   // for commissioner to increment the season week after entering weeklyPoints for each _teamAddress
