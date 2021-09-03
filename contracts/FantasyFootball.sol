@@ -9,7 +9,6 @@ pragma solidity 0.7.5;
 **single league, single year*/
 
 contract FantasyFootball {
-
   address[] public teams; 
   address payable commissioner;
   uint8 week;
@@ -25,7 +24,7 @@ contract FantasyFootball {
     address team;
     uint256 week;
     bool pointsEntered;
-    }
+  }
 
   TeamWeek[] public teamweeks;
   
@@ -63,7 +62,7 @@ contract FantasyFootball {
   }
   
   //team pays deposit and enters league if previously whitelisted by commissioner and not already a team
-  function enterLeague() public payable returns(bool){
+  function enterLeague() public payable returns (bool){
       require(!isTeam[msg.sender], "Address is already a team");
       require(teamWhitelist[msg.sender], "Address has not been whitelisted by commissioner");
       require(!isOver, "Season over, too late");
