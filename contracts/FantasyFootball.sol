@@ -45,7 +45,7 @@ contract FantasyFootball {
   // @param _description: brief league description/identifier 
   // @param _deposit: amount of wei required to partipate in league (ETH / 1e18)
   constructor(string memory _description, uint256 _deposit) payable {
-      require(msg.value >= deposit, "Submit deposit amount");
+      require(msg.value >= _deposit, "Submit deposit amount");
       commissioner = payable(address(msg.sender));
       deposit = _deposit;
       description = _description;
